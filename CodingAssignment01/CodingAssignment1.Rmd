@@ -16,6 +16,15 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r packages}
 # Put any packages you want here
 
+library(readxl)
+library(gt)
+library(tidyverse)
+library(gtsummary)
+library(plotly)
+library(readxl)
+library(plotly)
+library(corrplot)
+
 ```
 
 
@@ -36,9 +45,10 @@ Answer the following questions using complete sentences and attach all output, p
 
 **For this assignment, ignore the categorical variables (gender, smoker, cities)**
 
-```{r dataset, include=FALSE}
+```{r Health, include=FALSE}
 # Bring in the dataset here
 
+Health1 <- read.csv("../Data/insurance_0126_Group8.csv")
 
 ```
 
@@ -50,13 +60,119 @@ Perform univariate analyses on the quantitative variables (center, shape, spread
 
 ```{r q1}
 
+# Center 
+
+summary(Health1)
+
+#shape
+
+ggplot(Health1)
+
+hist(Health1$Charges)
+
+hist(Health1$Age)
+
+hist(Health1$BMI)
+
+hist(Health1$Female)
+
+hist(Health1$Children)
+
+hist(Health1$Smoker)
+
+hist(Health1$WinterSprings)
+
+hist(Health1$WinterPark)
+
+hist(Health1$Oviedo)
+
+#Spread 
+
+var(Health1$Charges,na.rm = TRUE)
+
+var(Health1$Age,na.rm = TRUE)
+
+var(Health1$BMI,na.rm = TRUE)
+
+var(Health1$Female,na.rm = TRUE)
+
+var(Health1$Children,na.rm = TRUE)
+
+var(Health1$Smoker,na.rm = TRUE)
+
+var(Health1$WinterSprings,na.rm = TRUE)
+
+var(Health1$WinterPark,na.rm = TRUE)
+
+var(Health1$Oviedo,na.rm = TRUE)
+
+
+sd(Health1$Charges,na.rm = TRUE)
+
+sd(Health1$Age,na.rm = TRUE)
+
+sd(Health1$BMI,na.rm = TRUE)
+
+sd(Health1$Female,na.rm = TRUE)
+
+sd(Health1$Children,na.rm = TRUE)
+
+sd(Health1$Smoker,na.rm = TRUE)
+
+sd(Health1$WinterSprings,na.rm = TRUE)
+
+sd(Health1$WinterPark,na.rm = TRUE)
+
+sd(Health1$Oviedo,na.rm = TRUE)
+
+
+
+IQR(Health1$Charges,na.rm = TRUE)
+
+IQR(Health1$Age,na.rm = TRUE)
+
+IQR(Health1$BMI,na.rm = TRUE)
+
+IQR(Health1$Female,na.rm = TRUE)
+
+IQR(Health1$Children,na.rm = TRUE)
+
+IQR(Health1$Smoker,na.rm = TRUE)
+
+IQR(Health1$WinterSprings,na.rm = TRUE)
+
+IQR(Health1$WinterPark,na.rm = TRUE)
+
+IQR(Health1$Oviedo,na.rm = TRUE)
+
+
+
+range(Health1$Charges,na.rm = TRUE)
+
+range(Health1$Age,na.rm = TRUE)
+
+range(Health1$BMI,na.rm = TRUE)
+
+range(Health1$Female,na.rm = TRUE)
+
+range(Health1$Children,na.rm = TRUE)
+
+range(Health1$Smoker,na.rm = TRUE)
+
+range(Health1$WinterSprings,na.rm = TRUE)
+
+range(Health1$WinterPark,na.rm = TRUE)
+
+range(Health1$Oviedo,na.rm = TRUE)
+
+
 ```
 
 # Question 2
 
 Perform bivariate analyses on the quantitative variables (direction, strength and form). Describe the linear association between all variables. 
 
-```{r q2}
+```{r q2
 
 ```
 
