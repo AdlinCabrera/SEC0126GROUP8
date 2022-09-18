@@ -66,7 +66,7 @@ summary(Health1)
 
 #shape
 
-ggplot(Health1)
+
 
 hist(Health1$Charges)
 
@@ -88,6 +88,8 @@ hist(Health1$Oviedo)
 
 #Spread 
 
+## variance
+
 var(Health1$Charges,na.rm = TRUE)
 
 var(Health1$Age,na.rm = TRUE)
@@ -106,6 +108,7 @@ var(Health1$WinterPark,na.rm = TRUE)
 
 var(Health1$Oviedo,na.rm = TRUE)
 
+## standard deviation
 
 sd(Health1$Charges,na.rm = TRUE)
 
@@ -125,7 +128,7 @@ sd(Health1$WinterPark,na.rm = TRUE)
 
 sd(Health1$Oviedo,na.rm = TRUE)
 
-
+## IQR
 
 IQR(Health1$Charges,na.rm = TRUE)
 
@@ -145,7 +148,7 @@ IQR(Health1$WinterPark,na.rm = TRUE)
 
 IQR(Health1$Oviedo,na.rm = TRUE)
 
-
+## range
 
 range(Health1$Charges,na.rm = TRUE)
 
@@ -174,6 +177,58 @@ Perform bivariate analyses on the quantitative variables (direction, strength an
 
 ```{r q2
 
+cor(Health1$Charges,Health1$Age)
+
+plot(Health1$Charges,Health1$Age)
+
+abline(lm(Age ~ Charges, data = Health1),lty = 2)
+
+cor(Health1$Charges,Health1$BMI)
+
+plot(Health1$Charges,Health1$BMI)
+
+abline(lm(BMI ~ Charges, data = Health1),lty = 2)
+
+cor(Health1$Charges,Health1$Female)
+
+plot(Health1$Charges,Health1$Female)
+
+abline(lm(Female ~ Charges, data = Health1),lty = 2)
+
+cor(Health1$Charges,Health1$Children)
+
+plot(Health1$Charges,Health1$Children)
+
+abline(lm(Children ~ Charges, data = Health1),lty = 2)
+
+cor(Health1$Charges,Health1$Smoker)
+
+plot(Health1$Charges,Health1$Smoker)
+
+abline(lm(Smoker ~ Charges, data = Health1),lty = 2)
+
+cor(Health1$Charges,Health1$WinterSprings)
+
+plot(Health1$Charges,Health1$WinterSprings)
+
+abline(lm(WinterSprings ~ Charges, data = Health1),lty = 2)
+
+cor(Health1$Charges,Health1$WinterPark)
+
+plot(Health1$Charges,Health1$WinterPark)
+
+abline(lm(WinterPark ~ Charges, data = Health1),lty = 2)
+
+cor(Health1$Charges,Health1$Oviedo)
+
+plot(Health1$Charges,Health1$Oviedo)
+
+abline(lm(Oviedo ~ Charges, data = Health1),lty = 2)
+
+
+
+
+
 ```
 
 # Question 3
@@ -183,6 +238,9 @@ Generate a regression equation in the following form:
 $$Charges = \beta_{0}+\beta_{1}*Age+\beta_{2}*BMI+\beta_{3}*Children$$
 
 ```{r q3}
+
+ts_model <- lm(Charges ~ Age + BMI + Children, data = Health1)
+summary(ts_model)
 
 ```
 
@@ -194,5 +252,11 @@ An eager insurance representative comes back with a potential client. The client
 
 
 ```{r q4}
+
+newPrediction <- data.frame(Age = 40 , BMI = 30 , Children = 1)
+predict(ts_model,
+newdata = newPrediction,
+interval = "confidence",
+level = .8)
 
 ```
