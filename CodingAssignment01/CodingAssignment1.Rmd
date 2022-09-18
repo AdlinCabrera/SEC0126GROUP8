@@ -257,6 +257,6 @@ newPrediction <- data.frame(Age = 40 , BMI = 30 , Children = 1)
 predict(ts_model,
 newdata = newPrediction,
 interval = "confidence",
-level = .8)
+level = .95)
 
 ```
