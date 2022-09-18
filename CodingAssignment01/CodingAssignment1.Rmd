@@ -2,11 +2,14 @@
 title: "Coding Assignment 1"
 author: "Team N"
 date: "Due: 2021-09-29 23:59"
-output: 
+output:
   html_document:
-    toc: true
+    toc: yes
     toc_depth: 2
-    toc_float: true
+    toc_float: yes
+  word_document:
+    toc: yes
+    toc_depth: '2'
 ---
 
 ```{r setup, include=FALSE}
@@ -175,7 +178,7 @@ range(Health1$Oviedo,na.rm = TRUE)
 
 Perform bivariate analyses on the quantitative variables (direction, strength and form). Describe the linear association between all variables. 
 
-```{r q2
+```{r q2,echo=FALSE, warning=FALSE}
 
 cor(Health1$Charges,Health1$Age)
 
@@ -224,9 +227,6 @@ cor(Health1$Charges,Health1$Oviedo)
 plot(Health1$Charges,Health1$Oviedo)
 
 abline(lm(Oviedo ~ Charges, data = Health1),lty = 2)
-
-
-
 
 
 ```
