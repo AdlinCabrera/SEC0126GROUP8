@@ -73,21 +73,15 @@ summary(Health1)
 
 hist(Health1$Charges)
 
+
+
 hist(Health1$Age)
 
 hist(Health1$BMI)
 
-hist(Health1$Female)
-
 hist(Health1$Children)
 
-hist(Health1$Smoker)
 
-hist(Health1$WinterSprings)
-
-hist(Health1$WinterPark)
-
-hist(Health1$Oviedo)
 
 #Spread 
 
@@ -99,17 +93,9 @@ var(Health1$Age,na.rm = TRUE)
 
 var(Health1$BMI,na.rm = TRUE)
 
-var(Health1$Female,na.rm = TRUE)
-
 var(Health1$Children,na.rm = TRUE)
 
-var(Health1$Smoker,na.rm = TRUE)
 
-var(Health1$WinterSprings,na.rm = TRUE)
-
-var(Health1$WinterPark,na.rm = TRUE)
-
-var(Health1$Oviedo,na.rm = TRUE)
 
 ## standard deviation
 
@@ -119,17 +105,9 @@ sd(Health1$Age,na.rm = TRUE)
 
 sd(Health1$BMI,na.rm = TRUE)
 
-sd(Health1$Female,na.rm = TRUE)
-
 sd(Health1$Children,na.rm = TRUE)
 
-sd(Health1$Smoker,na.rm = TRUE)
 
-sd(Health1$WinterSprings,na.rm = TRUE)
-
-sd(Health1$WinterPark,na.rm = TRUE)
-
-sd(Health1$Oviedo,na.rm = TRUE)
 
 ## IQR
 
@@ -139,17 +117,10 @@ IQR(Health1$Age,na.rm = TRUE)
 
 IQR(Health1$BMI,na.rm = TRUE)
 
-IQR(Health1$Female,na.rm = TRUE)
 
 IQR(Health1$Children,na.rm = TRUE)
 
-IQR(Health1$Smoker,na.rm = TRUE)
 
-IQR(Health1$WinterSprings,na.rm = TRUE)
-
-IQR(Health1$WinterPark,na.rm = TRUE)
-
-IQR(Health1$Oviedo,na.rm = TRUE)
 
 ## range
 
@@ -159,17 +130,9 @@ range(Health1$Age,na.rm = TRUE)
 
 range(Health1$BMI,na.rm = TRUE)
 
-range(Health1$Female,na.rm = TRUE)
-
 range(Health1$Children,na.rm = TRUE)
 
-range(Health1$Smoker,na.rm = TRUE)
 
-range(Health1$WinterSprings,na.rm = TRUE)
-
-range(Health1$WinterPark,na.rm = TRUE)
-
-range(Health1$Oviedo,na.rm = TRUE)
 
 
 ```
@@ -192,11 +155,6 @@ plot(Health1$Charges,Health1$BMI)
 
 abline(lm(BMI ~ Charges, data = Health1),lty = 2)
 
-cor(Health1$Charges,Health1$Female)
-
-plot(Health1$Charges,Health1$Female)
-
-abline(lm(Female ~ Charges, data = Health1),lty = 2)
 
 cor(Health1$Charges,Health1$Children)
 
@@ -204,29 +162,6 @@ plot(Health1$Charges,Health1$Children)
 
 abline(lm(Children ~ Charges, data = Health1),lty = 2)
 
-cor(Health1$Charges,Health1$Smoker)
-
-plot(Health1$Charges,Health1$Smoker)
-
-abline(lm(Smoker ~ Charges, data = Health1),lty = 2)
-
-cor(Health1$Charges,Health1$WinterSprings)
-
-plot(Health1$Charges,Health1$WinterSprings)
-
-abline(lm(WinterSprings ~ Charges, data = Health1),lty = 2)
-
-cor(Health1$Charges,Health1$WinterPark)
-
-plot(Health1$Charges,Health1$WinterPark)
-
-abline(lm(WinterPark ~ Charges, data = Health1),lty = 2)
-
-cor(Health1$Charges,Health1$Oviedo)
-
-plot(Health1$Charges,Health1$Oviedo)
-
-abline(lm(Oviedo ~ Charges, data = Health1),lty = 2)
 
 
 ```
@@ -242,7 +177,7 @@ $$Charges = \beta_{0}+\beta_{1}*Age+\beta_{2}*BMI+\beta_{3}*Children$$
 ts_model <- lm(Charges ~ Age + BMI + Children, data = Health1)
 summary(ts_model)
 
-$$Charges = -5841 +237*Age+300*BMI-312*Children$$
+#Charges = -5841 +237*Age+300*BMI-312*Children
 
 ```
 
