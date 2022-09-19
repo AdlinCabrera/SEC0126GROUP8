@@ -242,6 +242,8 @@ $$Charges = \beta_{0}+\beta_{1}*Age+\beta_{2}*BMI+\beta_{3}*Children$$
 ts_model <- lm(Charges ~ Age + BMI + Children, data = Health1)
 summary(ts_model)
 
+$$Charges = -5841 +237*Age+300*BMI-312*Children$$
+
 ```
 
 also write out the regression cleanly in this document.

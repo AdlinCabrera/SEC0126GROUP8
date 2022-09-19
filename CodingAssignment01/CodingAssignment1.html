@@ -1529,8 +1529,9 @@ library(tidyverse)</code></pre>
 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>library(gtsummary)
-library(plotly)</code></pre>
+<pre class="r"><code>library(gtsummary)</code></pre>
+<pre><code>## #BlackLivesMatter</code></pre>
+<pre class="r"><code>library(plotly)</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;plotly&#39;
 ## 
@@ -1762,9 +1763,9 @@ well)</p>
 predict(ts_model,
 newdata = newPrediction,
 interval = &quot;confidence&quot;,
-level = .8)</code></pre>
-<pre><code>##        fit      lwr     upr
-## 1 12321.89 10120.27 14523.5</code></pre>
+level = .95)</code></pre>
+<pre><code>##        fit      lwr      upr
+## 1 12321.89 8913.548 15730.23</code></pre>
 </div>
 
 
