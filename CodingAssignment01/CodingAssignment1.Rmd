@@ -51,7 +51,9 @@ Answer the following questions using complete sentences and attach all output, p
 ```{r Health, include=FALSE}
 # Bring in the dataset here
 
-Health1 <- read.csv("../Data/insurance_0126_Group8.csv")
+Health2 <- read.csv("../Data/insurance_0126_Group8.csv")
+
+Health1 <- subset(Health2, select = c("Charges","Age","BMI","Children"))
 
 ```
 
@@ -71,15 +73,14 @@ summary(Health1)
 
 
 
-hist(Health1$Charges)
 
+hist(Health1$Charges , xlab = "Health Charge", ylab = "Frequency",main = "Histogram of charges", col = "blue")
 
+hist(Health1$Age, xlab = "Age", ylab = "Frequency",main = "Histogram of Age", col = "blue")
 
-hist(Health1$Age)
+hist(Health1$BMI,  xlab = "BMI", ylab = "Frequency",main = "Histogram of Age", col = "blue")
 
-hist(Health1$BMI)
-
-hist(Health1$Children)
+hist(Health1$Children, xlab = "Children", ylab = "Frequency",main = "Histogram of Age", col = "blue")
 
 
 
@@ -145,23 +146,46 @@ Perform bivariate analyses on the quantitative variables (direction, strength an
 
 cor(Health1$Charges,Health1$Age)
 
-plot(Health1$Charges,Health1$Age)
+plot(Health1$Charges,Health1$Age, xlab = "Charges", ylab = "Age",main = "Bivariate Analysis of Charges & Age", col = "blue",bg = "red",pch = 21)
 
 abline(lm(Age ~ Charges, data = Health1),lty = 2)
 
+
+
 cor(Health1$Charges,Health1$BMI)
 
-plot(Health1$Charges,Health1$BMI)
+plot(Health1$Charges,Health1$BMI,xlab = "Charges", ylab = "BMI",main = "Bivariate Analysis of Charges & BMI", col = "blue",bg = "red",pch = 21)
 
 abline(lm(BMI ~ Charges, data = Health1),lty = 2)
 
 
 cor(Health1$Charges,Health1$Children)
 
-plot(Health1$Charges,Health1$Children)
+plot(Health1$Charges,Health1$Children,xlab = "Charges", ylab = "Children",main = "Bivariate Analysis of Charges & Children", col = "blue",bg = "red",pch = 21)
 
 abline(lm(Children ~ Charges, data = Health1),lty = 2)
 
+
+
+cor(Health1$BMI,Health1$Age)
+
+plot(Health1$BMI,Health1$Age, xlab = "BMI", ylab = "Age",main = "Bivariate Analysis of BMI & Age", col = "blue",bg = "red",pch = 21)
+
+abline(lm(Age ~ Charges, data = Health1),lty = 2)
+
+
+cor(Health1$BMI,Health1$Children)
+
+plot(Health1$BMI,Health1$Children, xlab = "BMI", ylab = "Children",main = "Bivariate Analysis of BMI & Children", col = "blue",bg = "red",pch = 21)
+
+abline(lm(Age ~ Charges, data = Health1),lty = 2)
+
+
+cor(Health1$Age,Health1$Children)
+
+plot(Health1$Age,Health1$Children, xlab = "Age", ylab = "Children",main = "Bivariate Analysis of Age & Children", col = "blue",bg = "red",pch = 21)
+
+abline(lm(Age ~ Charges, data = Health1),lty = 2)
 
 
 ```
@@ -177,11 +201,13 @@ $$Charges = \beta_{0}+\beta_{1}*Age+\beta_{2}*BMI+\beta_{3}*Children$$
 ts_model <- lm(Charges ~ Age + BMI + Children, data = Health1)
 summary(ts_model)
 
-#Charges = -5841 +237*Age+300*BMI-312*Children
+
 
 ```
 
 also write out the regression cleanly in this document.
+
+Charges = -5841 +237*Age+300*BMI-312*Children
 
 # Question 4
 
