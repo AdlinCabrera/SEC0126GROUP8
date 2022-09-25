@@ -3,13 +3,13 @@ title: "Coding Assignment 1"
 author: "Team 8"
 date: "Due: 2021-09-29 23:59"
 output:
+  word_document:
+    toc: yes
+    toc_depth: '2'
   html_document:
     toc: true
     toc_depth: 2
     toc_float: true
-  word_document:
-    toc: yes
-    toc_depth: '2'
 ---
 
 ```{r setup, include=FALSE}
@@ -141,6 +141,31 @@ range(Health1$Children,na.rm = TRUE)
 # Question 2
 
 Perform bivariate analyses on the quantitative variables (direction, strength and form). Describe the linear association between all variables. 
+
+Bivariate Analysis of Charges & Age
+
+This scatterplot shows a weak negative linear association between age of the primary beneficiary and total medical expenses for a particular insurance plan.
+
+Bivariate Analysis of Charges & BMI
+
+This scatterplot shows a weak negative linear association between age of the primary beneficiary and total medical expenses for a particular insurance plan.
+
+Bivariate Analysis of Charges & Children
+
+This scatterplot shows a weak negative linear association between age of the primary beneficiary and total medical expenses for a particular insurance plan
+
+Bivariate Analysis of BMI & Age
+
+This scatterplot shows a weak negative linear association between age of the primary beneficiary and primary beneficiary’s body mass index.
+
+Bivariate Analysis of BMI & Children
+
+This scatterplot shows a weak negative with no linear association between primary beneficiary and number of children covered by health insurance plan and primary beneficiary’s body mass index
+
+Bivariate Analysis of Age & Children
+
+This scatterplot shows a weak negative with no linear association between age of the primary beneficiary and number of children covered by health insurance plan.
+
 
 ```{r q2,echo=FALSE, warning=FALSE}
 
