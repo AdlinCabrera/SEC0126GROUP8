@@ -77,13 +77,13 @@ summary(Health1)
 
 
 
-hist(Health1$Charges , xlab = "Health Charge", ylab = "Frequency",main = "Histogram of charges", col = "blue")
+hist(Health1$Charges , xlab = "Health Charge", ylab = "Frequency",main = "Histogram of Charges", col = "blue")
 
 hist(Health1$Age, xlab = "Age", ylab = "Frequency",main = "Histogram of Age", col = "blue")
 
-hist(Health1$BMI,  xlab = "BMI", ylab = "Frequency",main = "Histogram of Age", col = "blue")
+hist(Health1$BMI,  xlab = "BMI", ylab = "Frequency",main = "Histogram of BMI", col = "blue")
 
-hist(Health1$Children, xlab = "Children", ylab = "Frequency",main = "Histogram of Age", col = "blue")
+hist(Health1$Children, xlab = "Children", ylab = "Frequency",main = "Histogram of Children", col = "blue")
 
 
 
