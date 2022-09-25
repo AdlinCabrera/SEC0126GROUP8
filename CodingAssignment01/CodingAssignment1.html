@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Team N" />
+<meta name="author" content="Team 8" />
 
 
 <title>Coding Assignment 1</title>
@@ -1510,7 +1510,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Coding Assignment 1</h1>
-<h4 class="author">Team N</h4>
+<h4 class="author">Team 8</h4>
 <h4 class="date">Due: 2021-09-29 23:59</h4>
 
 </div>
@@ -1522,10 +1522,10 @@ library(readxl)
 library(gt)
 library(tidyverse)</code></pre>
 <pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-## ✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
-## ✔ tibble  3.1.8      ✔ dplyr   1.0.10
-## ✔ tidyr   1.2.0      ✔ stringr 1.4.1 
-## ✔ readr   2.1.2      ✔ forcats 0.5.2 
+## ✔ ggplot2 3.3.6     ✔ purrr   0.3.4
+## ✔ tibble  3.1.8     ✔ dplyr   1.0.9
+## ✔ tidyr   1.2.0     ✔ stringr 1.4.1
+## ✔ readr   2.1.2     ✔ forcats 0.5.2
 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
@@ -1690,7 +1690,9 @@ summary(ts_model)</code></pre>
 ## Multiple R-squared:   0.12,  Adjusted R-squared:  0.06262 
 ## F-statistic: 2.091 on 3 and 46 DF,  p-value: 0.1144</code></pre>
 <p>also write out the regression cleanly in this document.</p>
-<p>Charges = -5841 +237<em>Age+300</em>BMI-312*Children</p>
+<p>Based on the data provided, the regression equation is as
+follows:</p>
+<p>Charges = -5841 + 237Age + 300BMI - 312Children</p>
 </div>
 <div id="question-4" class="section level1">
 <h1>Question 4</h1>
@@ -1706,6 +1708,10 @@ interval = &quot;confidence&quot;,
 level = .95)</code></pre>
 <pre><code>##        fit      lwr      upr
 ## 1 12321.89 8913.548 15730.23</code></pre>
+<p>The result indicates that the insurance representative can expect the
+value in medical expenses to be about 12,321.89 and that they can be 95
+percent confident that the true value lies somewhere between 8,913,55
+and 15,730.23.</p>
 </div>
 
 
