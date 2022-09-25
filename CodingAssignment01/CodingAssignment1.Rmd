@@ -3,13 +3,16 @@ title: "Coding Assignment 1"
 author: "Team 8"
 date: "Due: 2021-09-29 23:59"
 output:
+  html_document:
+    toc: yes
+    toc_depth: 2
+    toc_float: yes
+  pdf_document:
+    toc: yes
+    toc_depth: '2'
   word_document:
     toc: yes
     toc_depth: '2'
-  html_document:
-    toc: true
-    toc_depth: 2
-    toc_float: true
 ---
 
 ```{r setup, include=FALSE}
@@ -142,27 +145,27 @@ range(Health1$Children,na.rm = TRUE)
 
 Perform bivariate analyses on the quantitative variables (direction, strength and form). Describe the linear association between all variables. 
 
-Bivariate Analysis of Charges & Age
+**Bivariate Analysis of Charges & Age**
 
 This scatterplot shows a weak negative linear association between age of the primary beneficiary and total medical expenses for a particular insurance plan.
 
-Bivariate Analysis of Charges & BMI
+**Bivariate Analysis of Charges & BMI**
 
 This scatterplot shows a weak negative linear association between age of the primary beneficiary and total medical expenses for a particular insurance plan.
 
-Bivariate Analysis of Charges & Children
+**Bivariate Analysis of Charges & Children**
 
 This scatterplot shows a weak negative linear association between age of the primary beneficiary and total medical expenses for a particular insurance plan
 
-Bivariate Analysis of BMI & Age
+**Bivariate Analysis of BMI & Age**
 
 This scatterplot shows a weak negative linear association between age of the primary beneficiary and primary beneficiary’s body mass index.
 
-Bivariate Analysis of BMI & Children
+**Bivariate Analysis of BMI & Children**
 
 This scatterplot shows a weak negative with no linear association between primary beneficiary and number of children covered by health insurance plan and primary beneficiary’s body mass index
 
-Bivariate Analysis of Age & Children
+**Bivariate Analysis of Age & Children**
 
 This scatterplot shows a weak negative with no linear association between age of the primary beneficiary and number of children covered by health insurance plan.
 
@@ -227,8 +230,6 @@ ts_model <- lm(Charges ~ Age + BMI + Children, data = Health1)
 summary(ts_model)
 
 ```
-
-also write out the regression cleanly in this document.
 
 Based on the data provided, the regression equation is as follows:
 
