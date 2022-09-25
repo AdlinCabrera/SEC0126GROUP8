@@ -67,28 +67,29 @@ Health1 <- subset(Health2, select = c("Charges","Age","BMI","Children"))
 Perform univariate analyses on the quantitative variables (center, shape, spread). Include descriptive statistics, and histograms. Be sure to use terms discussed in class such as bimodal, skewed left, etc.
 
 
-Based off the analysis we found the following… All histograms show that they skew to the right excluding the histogram of Age. The histogram of age shows more of a symmetric bell curve shape. All histograms show as unimodal distribution because of the one identified one mode or modal class in each histogram. Our variances and Standard deviation are shown below. We determined Variance by Sum of squared deviations of xi from divided by degrees of freedom. The Standard Deviation by Square root of variance. Gets parameter you are measuring into right units. The standard deviation measures how far a group of numbers is from the mean. The variance is the average of the squared differences from the mean.
+Based on the analysis we found the following: Each histogram shows that they skew to the right, excluding the histogram of Age. This shows more of a symmetric bell curve shape. All histograms show a unimodal distribution because of the one identified mode or modal class in each histogram. Our variances and Standard deviation are shown below. We determined Variance by the Sum of squared deviations of xi divided by degrees of freedom. The Standard Deviation by Square root of variance. Gets the parameter you are measuring into the right units. The standard deviation measures how far a group of numbers is from the mean. The variance is the average of the squared differences from the mean.
 
-**The Histogram of charges:**
 
-* Skewed Right/ Positively Skewed because the mean is greater than the median
+**The Histogram of Charges:**
+
+* **Skewed Right**: The histogram is positively skewed given that the mean is greater than the median.
 * Since the mean is not approximately equal to the median the distribution is not symmetric.
-* Variance: 
+* The histogram is unimodal as it only has one mode or modal class.
 
 **The Histogram of Age:**
 
-* Bell-Shaped/ the mean is approximately equal to the median which means that the histogram is symmetric.
-* This histogram is unimodal because the data has one single mode, identified by the ‘peak’ of the curve.
+* **Skewed Left**: The mean is less than the median. This shows the histogram is negatively skewed.
+* This histogram is unimodal because the data has one single mode, identified by the ‘peak’ of the curve / one mode.
 
 **The Histogram of BMI:**
 
-* Skewed Right/ Positively Skewed. While the mean and median are relatively close the histogram is not symmetric. The mean is greater than the median.
-* This histogram is unimodal because the histogram
+* **Skewed Right**: The mean is greater than the median which shows the positive skew.
+* This histogram is unimodal because the histogram has one modal class.
 
 **The Histogram of Children:**
 
-* Skewed Right/ Positively Skewed. While the mean and median are relatively close the histogram is not symmetric. The mean is greater than the median.
-* This histogram is unimodal as only once peak is identified.
+* **Skewed Right**: The mean is greater than the median which identifies the data/histogram as positively skewed.
+* This histogram is unimodal as only one peak is identified.
 
 ```{r q1}
 
