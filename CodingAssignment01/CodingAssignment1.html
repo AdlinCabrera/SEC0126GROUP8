@@ -1524,13 +1524,13 @@ library(tidyverse)</code></pre>
 <pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
 ## ✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
 ## ✔ tibble  3.1.8      ✔ dplyr   1.0.10
-## ✔ tidyr   1.2.1      ✔ stringr 1.4.1 
+## ✔ tidyr   1.2.0      ✔ stringr 1.4.1 
 ## ✔ readr   2.1.2      ✔ forcats 0.5.2 
 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>library(gtsummary)</code></pre>
-<pre><code>## #BlackLivesMatter</code></pre>
+<pre><code>## #StandWithUkraine</code></pre>
 <pre class="r"><code>library(plotly)</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;plotly&#39;
@@ -1711,6 +1711,28 @@ range(Health1$Charges,na.rm = TRUE)</code></pre>
 <pre><code>## [1] 18.335 49.060</code></pre>
 <pre class="r"><code>range(Health1$Children,na.rm = TRUE)</code></pre>
 <pre><code>## [1] 0 5</code></pre>
+<pre class="r"><code>##mode
+
+getModes &lt;- function(x) {
+ux &lt;- unique(x)
+tab &lt;- tabulate(match(x, ux))
+ux[tab == max(tab)]
+}
+getModes(Health1$Charges)</code></pre>
+<pre><code>##  [1]  1639.563 21232.182  6250.435 38282.749  4337.735  8968.330 12797.210
+##  [8]  1984.453 17878.901  8930.935  9991.038  4527.183 15555.189  2690.114
+## [15] 20462.998  2639.043  7358.176  6457.843 11381.325 28340.189 21098.554
+## [22] 38344.566  2866.091 13063.883 11735.879  1981.582  5031.270  9447.250
+## [29] 17560.380  6238.298 47403.880 11356.661  9724.530  3579.829  6653.789
+## [36]  5472.449  7147.473  7640.309 20709.020 40974.165  7371.772 17496.306
+## [43]  8027.968 28287.898 40273.645  5846.918 12982.875  9222.403  6610.110
+## [50]  6710.192</code></pre>
+<pre class="r"><code>getModes(Health1$Age)</code></pre>
+<pre><code>## [1] 48 41</code></pre>
+<pre class="r"><code>getModes(Health1$BMI)</code></pre>
+<pre><code>## [1] 35.750 30.200 41.325 27.645</code></pre>
+<pre class="r"><code>getModes(Health1$Children)</code></pre>
+<pre><code>## [1] 0</code></pre>
 </div>
 <div id="question-2" class="section level1">
 <h1>Question 2</h1>
