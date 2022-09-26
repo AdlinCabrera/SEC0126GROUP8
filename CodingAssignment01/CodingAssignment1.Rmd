@@ -108,7 +108,7 @@ hist(Health1$Charges , xlab = "Health Charge", ylab = "Frequency",main = "Histog
 abline(v = mean(Health1$Charges),                       # Add line for mean
        col = "red",
        lwd = 3)
-abline(v = median(Health1$Charges),                       # Add line for mean
+abline(v = median(Health1$Charges),                       # Add line for median
        col = "orange",
        lwd = 3)
 legend("topright",legend = c("Mean Charges","Median Charges"),pch = "|", col=c("red", "orange",lwd=2))
@@ -117,7 +117,7 @@ hist(Health1$Age, xlab = "Age", ylab = "Frequency",main = "Histogram of Age", co
 abline(v = mean(Health1$Age),                       # Add line for mean
        col = "red",
        lwd = 3)
-abline(v = median(Health1$Age),                       # Add line for mean
+abline(v = median(Health1$Age),                       # Add line for median
        col = "orange",
        lwd = 3)
 legend("topright",legend = c("Mean Age","Median Age"),pch = "|", col=c("red", "orange",lwd=2))
@@ -127,7 +127,7 @@ hist(Health1$BMI,  xlab = "BMI", ylab = "Frequency",main = "Histogram of BMI", c
 abline(v = mean(Health1$BMI),                       # Add line for mean
        col = "red",
        lwd = 3)
-abline(v = median(Health1$BMI),                       # Add line for mean
+abline(v = median(Health1$BMI),                       # Add line for median
        col = "orange",
        lwd = 3)
 legend("topright",legend = c("Mean BMI","Median BMI"),pch = "|", col=c("red", "orange",lwd=2))
@@ -136,7 +136,7 @@ hist(Health1$Children, xlab = "Children", ylab = "Frequency",main = "Histogram o
 abline(v = mean(Health1$Children),                       # Add line for mean
        col = "red",
        lwd = 3)
-abline(v = median(Health1$Children),                       # Add line for mean
+abline(v = median(Health1$Children),                       # Add line for median
        col = "orange",
        lwd = 3)
 legend("topright",legend = c("Mean Children","Median Children"),pch = "|", col=c("red", "orange",lwd=2))
