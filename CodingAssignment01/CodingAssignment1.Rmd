@@ -67,7 +67,7 @@ Health1 <- subset(Health2, select = c("Charges","Age","BMI","Children"))
 Perform univariate analyses on the quantitative variables (center, shape, spread). Include descriptive statistics, and histograms. Be sure to use terms discussed in class such as bimodal, skewed left, etc.
 
 
-Based on the analysis we found the following: Each histogram shows that they skew to the right, excluding the histogram of Age. The Histogram of Age shows more of a skew to the left. All histograms show a unimodal distribution because of the one identified mode or modal class in each histogram. Our variances and Standard deviation are shown below. We determined Variance by the Sum of squared deviations of xi divided by degrees of freedom. The Standard Deviation by Square root of variance. Gets the parameter you are measuring into the right units. The standard deviation measures how far a group of numbers is from the mean. The variance is the average of the squared differences from the mean.
+Based on the analysis we found the following: Each histogram shows that they skew to the right, excluding the histogram of Age. The Histogram of Age shows more of a skew to the left. All histograms show a unimodal distribution because of the one identified mode or modal class in each histogram. Our variances and standard deviation are shown below. We determined variance by the sum of squared deviations of xi divided by degrees of freedom. The standard deviation by square root of variance. Gets the parameter you are measuring into the right units. The standard deviation measures how far a group of numbers is from the mean. The variance is the average of the squared differences from the mean.
 
 
 **The Histogram of Charges:**
@@ -227,7 +227,7 @@ This scatterplot shows a weak negative linear association between age of the pri
 
 **Bivariate Analysis of Charges & Children**
 
-This scatterplot shows a weak negative linear association between age of the primary beneficiary and total medical expenses for a particular insurance plan
+This scatterplot shows a weak negative linear association between age of the primary beneficiary and total medical expenses for a particular insurance plan.
 
 **Bivariate Analysis of BMI & Age**
 
@@ -235,7 +235,7 @@ This scatterplot shows a weak negative linear association between age of the pri
 
 **Bivariate Analysis of BMI & Children**
 
-This scatterplot shows a weak negative with no linear association between primary beneficiary and number of children covered by health insurance plan and primary beneficiary’s body mass index
+This scatterplot shows a weak negative with no linear association between primary beneficiary and number of children covered by health insurance plan and primary beneficiary’s body mass index.
 
 **Bivariate Analysis of Age & Children**
 
