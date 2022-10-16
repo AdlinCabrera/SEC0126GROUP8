@@ -1598,31 +1598,11 @@ tested significant.</p>
 <p>Using the regression equation above, predict the amount of medical
 expenses associated with this policy. (Provide a 95% confidence interval
 as well)</p>
-<pre class="r"><code>newPrediction_Age &lt;- insurance[2,]
+<pre class="r"><code>newPrediction &lt;- data.frame(Age=35,BMI=26,Children=1,Female=1,Smoker=1,WinterSprings=0,WinterPark=0,Oviedo=0)
 
-predict(model_full, newdata= newPrediction_Age, interval = &quot;confidence&quot;)</code></pre>
+predict(model_full, newdata= newPrediction, interval = &quot;confidence&quot;)</code></pre>
 <pre><code>##        fit      lwr      upr
-## 2 9442.063 5042.114 13842.01</code></pre>
-<pre class="r"><code>newPrediction_BMI &lt;- insurance[3,]
-
-predict(model_full, newdata= newPrediction_BMI, interval = &quot;confidence&quot;)</code></pre>
-<pre><code>##        fit      lwr      upr
-## 3 5998.359 761.0535 11235.66</code></pre>
-<pre class="r"><code>newPrediction_Children &lt;- insurance[4,]
-
-predict(model_full, newdata= newPrediction_Children, interval = &quot;confidence&quot;)</code></pre>
-<pre><code>##        fit      lwr      upr
-## 4 32569.89 27215.67 37924.12</code></pre>
-<pre class="r"><code>newPrediction_Gender &lt;- insurance[5,]
-
-predict(model_full, newdata= newPrediction_Gender, interval = &quot;confidence&quot;)</code></pre>
-<pre><code>##        fit      lwr      upr
-## 5 5786.439 1067.795 10505.08</code></pre>
-<pre class="r"><code>newPrediction_Smoker &lt;- insurance[6,]
-
-predict(model_full, newdata= newPrediction_Smoker, interval = &quot;confidence&quot;)</code></pre>
-<pre><code>##        fit      lwr      upr
-## 6 9725.763 5468.339 13983.19</code></pre>
+## 1 31013.66 24971.33 37055.99</code></pre>
 </div>
 <div id="question-4" class="section level2">
 <h2>Question 4</h2>

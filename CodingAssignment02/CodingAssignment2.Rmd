@@ -73,26 +73,9 @@ Using the regression equation above, predict the amount of medical expenses asso
 
 ```{r q3}
 
-newPrediction_Age <- insurance[2,]
+newPrediction <- data.frame(Age=35,BMI=26,Children=1,Female=1,Smoker=1,WinterSprings=0,WinterPark=0,Oviedo=0)
 
-predict(model_full, newdata= newPrediction_Age, interval = "confidence")
-
-newPrediction_BMI <- insurance[3,]
-
-predict(model_full, newdata= newPrediction_BMI, interval = "confidence")
-
-newPrediction_Children <- insurance[4,]
-
-predict(model_full, newdata= newPrediction_Children, interval = "confidence")
-
-newPrediction_Gender <- insurance[5,]
-
-predict(model_full, newdata= newPrediction_Gender, interval = "confidence")
-
-newPrediction_Smoker <- insurance[6,]
-
-predict(model_full, newdata= newPrediction_Smoker, interval = "confidence")
-
+predict(model_full, newdata= newPrediction, interval = "confidence")
 
 
 
