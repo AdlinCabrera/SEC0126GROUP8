@@ -49,6 +49,8 @@ regsummary <- summary(model_full)
 regsummary
 ```
 
+Charges = -14648 + 322Age + 287BMI +56Children +1837Female +25052Smoker +1252WinterSprings +1242WinterPark +158Oveido
+
 Which independent variables test significant in a two-tailed test? Use $\alpha = 0.2$
 
 
