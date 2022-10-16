@@ -29,7 +29,7 @@ Answer the following questions using complete sentences and attach all output, p
 
 
 ```{r dataset, include=FALSE}
-insurance <- read.csv("../Data/insurance_0026_Group1.csv")
+insurance <- read.csv("../Data/insurance_0126_Group8.csv")
 ```
 
 
@@ -42,6 +42,11 @@ $$Charges = \beta_{0}+\beta_{1}*Age+\beta_{2}*BMI+\beta_{3}*Children + \beta_{4}
 
 ```{r q1}
 
+model_full <- lm(Charges ~ Age + BMI + Children + Female + Smoker + WinterSprings + WinterPark + Oviedo , data = insurance)
+
+regsummary <- summary(model_full)
+
+regsummary
 ```
 
 Which independent variables test significant in a two-tailed test? Use $\alpha = 0.2$
@@ -68,6 +73,31 @@ Using the regression equation above, predict the amount of medical expenses asso
 
 ```{r q3}
 
+newPrediction_Age <- insurance[2,]
+
+predict(model_full, newdata= newPrediction_Age, interval = "confidence")
+
+newPrediction_BMI <- insurance[3,]
+
+predict(model_full, newdata= newPrediction_BMI, interval = "confidence")
+
+newPrediction_Children <- insurance[4,]
+
+predict(model_full, newdata= newPrediction_Children, interval = "confidence")
+
+newPrediction_Gender <- insurance[5,]
+
+predict(model_full, newdata= newPrediction_Gender, interval = "confidence")
+
+newPrediction_Smoker <- insurance[6,]
+
+predict(model_full, newdata= newPrediction_Smoker, interval = "confidence")
+
+
+
+
+
+
 ```
 
 ## Question 4
@@ -75,6 +105,14 @@ Using the regression equation above, predict the amount of medical expenses asso
 Compare the model from question 1, to a model that does not include the group of city dummies. Does including the cities reduce the SSE by a statistically significant amount? (check the partial F-test for significance of the dummies as a group). Use $\alpha = 0.05$
 
 ```{r q4}
+
+reduced_insurance <- subset(insurance,select = -c(WinterSprings,WinterPark,Oviedo))
+                      
+model_reduced <- lm(Charges ~. , data = reduced_insurance)    
+
+summary(model_reduced)
+
+anova(model_reduced, model_full)
 
 ```
 
