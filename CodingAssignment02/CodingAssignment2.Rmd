@@ -102,4 +102,4 @@ anova(model_reduced, model_full)
 
 ```
 
-
+Including the cities in the model does not reduce the SSE by a statistically significant amount.Independently, the cities did not test significant either.  
