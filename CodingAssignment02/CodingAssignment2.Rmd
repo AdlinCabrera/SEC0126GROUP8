@@ -2,10 +2,12 @@
 title: "Coding Assignment 2"
 author: "Team 8"
 date: "Due: 2021-10-23 23:59"
-output: 
+output:
   html_document:
-    toc: true
-    toc_float: true
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    toc: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -53,7 +55,10 @@ Charges = -14648 + 322Age + 287BMI +56Children +1837Female +25052Smoker +1252Win
 
 Which independent variables test significant in a two-tailed test? Use $\alpha = 0.2$
 
-
+* **Answer**: BMI would be the significant variable in this two tailed test. It is the only variable that fits the two tailed test p < alpha. 
+* Alpha = .2 
+* BMI =.03. 
+Thus .03 < .2.
 
 ## Question 2
 
