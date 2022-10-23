@@ -1,0 +1,315 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Coding Assignment 2},
+  pdfauthor={Team 8},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Coding Assignment 2}
+\author{Team 8}
+\date{Due: 2021-10-23 23:59}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+A Florida health insurance company wants to predict annual claims for
+individual clients. The company pulls a random sample of 50 customers.
+The owner wishes to charge an actuarially fair premium to ensure a
+normal rate of return. The owner collects all of their current
+customer's health care expenses from the last year and compares them
+with what is known about each customer's plan.
+
+The data on the 50 customers in the sample is as follows:
+
+\begin{itemize}
+\tightlist
+\item
+  Charges: Total medical expenses for a particular insurance plan (in
+  dollars)
+\item
+  Age: Age of the primary beneficiary
+\item
+  BMI: Primary beneficiary's body mass index (kg/m2)
+\item
+  Female: Primary beneficiary's birth sex (0 = Male, 1 = Female)
+\item
+  Children: Number of children covered by health insurance plan
+  (includes other dependents as well)
+\item
+  Smoker: Indicator if primary beneficiary is a smoker (0 = non-smoker,
+  1 = smoker)
+\item
+  Cities: Dummy variables for each city with the default being Sanford
+\end{itemize}
+
+Answer the following questions using complete sentences and attach all
+output, plots, etc. within this report.
+
+\hypertarget{question-1}{%
+\subsection{Question 1}\label{question-1}}
+
+Generate this regression equation:
+
+\[Charges = \beta_{0}+\beta_{1}*Age+\beta_{2}*BMI+\beta_{3}*Children + \beta_{4}*Female + \beta_{5}*Smoker + \beta_{6}*WinterSprings + \beta_{7}*WinterPark + \beta_{8}*Oviedo\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model\_full }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Charges }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Age }\SpecialCharTok{+}\NormalTok{ BMI }\SpecialCharTok{+}\NormalTok{ Children }\SpecialCharTok{+}\NormalTok{ Female }\SpecialCharTok{+}\NormalTok{ Smoker }\SpecialCharTok{+}\NormalTok{ WinterSprings }\SpecialCharTok{+}\NormalTok{ WinterPark }\SpecialCharTok{+}\NormalTok{ Oviedo , }\AttributeTok{data =}\NormalTok{ insurance)}
+
+\NormalTok{regsummary }\OtherTok{\textless{}{-}} \FunctionTok{summary}\NormalTok{(model\_full)}
+
+\NormalTok{regsummary}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = Charges ~ Age + BMI + Children + Female + Smoker + 
+##     WinterSprings + WinterPark + Oviedo, data = insurance)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -12252.4  -2815.9   -451.8   1603.1  18689.1 
+## 
+## Coefficients:
+##                Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)   -14647.86    5610.24  -2.611   0.0126 *  
+## Age              321.81      72.21   4.456 6.32e-05 ***
+## BMI              286.66     163.80   1.750   0.0876 .  
+## Children          55.85     755.52   0.074   0.9414    
+## Female          1836.69    1800.23   1.020   0.3136    
+## Smoker         25052.29    2514.19   9.964 1.63e-12 ***
+## WinterSprings   1252.18    2694.64   0.465   0.6446    
+## WinterPark      1241.60    2744.59   0.452   0.6534    
+## Oviedo           157.66    2385.95   0.066   0.9476    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 6123 on 41 degrees of freedom
+## Multiple R-squared:  0.7585, Adjusted R-squared:  0.7114 
+## F-statistic:  16.1 on 8 and 41 DF,  p-value: 1.934e-10
+\end{verbatim}
+
+Charges = -14648 + 322Age + 287BMI +56Children +1837Female +25052Smoker
++1252WinterSprings +1242WinterPark +158Oveido
+
+Which independent variables test significant in a two-tailed test? Use
+\(\alpha = 0.2\)
+
+\hypertarget{question-2}{%
+\subsection{Question 2}\label{question-2}}
+
+Interpret the coefficients of all the independent variables that tested
+significant.
+
+\hypertarget{question-3}{%
+\subsection{Question 3}\label{question-3}}
+
+The insurance agent returns with another client:
+
+\begin{itemize}
+\tightlist
+\item
+  Age: 35
+\item
+  BMI: 26
+\item
+  Children: 1
+\item
+  Gender: Female
+\item
+  Smoker: No
+\item
+  City: Sanford
+\end{itemize}
+
+Using the regression equation above, predict the amount of medical
+expenses associated with this policy. (Provide a 95\% confidence
+interval as well)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{newPrediction }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Age=}\DecValTok{35}\NormalTok{,}\AttributeTok{BMI=}\DecValTok{26}\NormalTok{,}\AttributeTok{Children=}\DecValTok{1}\NormalTok{,}\AttributeTok{Female=}\DecValTok{1}\NormalTok{,}\AttributeTok{Smoker=}\DecValTok{1}\NormalTok{,}\AttributeTok{WinterSprings=}\DecValTok{0}\NormalTok{,}\AttributeTok{WinterPark=}\DecValTok{0}\NormalTok{,}\AttributeTok{Oviedo=}\DecValTok{0}\NormalTok{)}
+
+\FunctionTok{predict}\NormalTok{(model\_full, }\AttributeTok{newdata=}\NormalTok{ newPrediction, }\AttributeTok{interval =} \StringTok{"confidence"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        fit      lwr      upr
+## 1 31013.66 24971.33 37055.99
+\end{verbatim}
+
+The result indicates that the insurance representative can expect the
+value in medical expenses to be about 31,013.66 and that they can be 95
+percent confident that the true value lies somewhere between 24,971.33
+and 37,055.99.
+
+\hypertarget{question-4}{%
+\subsection{Question 4}\label{question-4}}
+
+Compare the model from question 1, to a model that does not include the
+group of city dummies. Does including the cities reduce the SSE by a
+statistically significant amount? (check the partial F-test for
+significance of the dummies as a group). Use \(\alpha = 0.05\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{reduced\_insurance }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(insurance,}\AttributeTok{select =} \SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(WinterSprings,WinterPark,Oviedo))}
+                      
+\NormalTok{model\_reduced }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Charges }\SpecialCharTok{\textasciitilde{}}\NormalTok{. , }\AttributeTok{data =}\NormalTok{ reduced\_insurance)    }
+
+\FunctionTok{summary}\NormalTok{(model\_reduced)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = Charges ~ ., data = reduced_insurance)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -12330.6  -2719.2   -729.7   1393.7  18270.7 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -15514.41    5104.98  -3.039  0.00398 ** 
+## Age            318.97      68.16   4.680 2.75e-05 ***
+## BMI            331.88     138.37   2.399  0.02077 *  
+## Female        1946.34    1735.79   1.121  0.26824    
+## Children       108.90     723.44   0.151  0.88104    
+## Smoker       25023.55    2337.44  10.706 7.83e-14 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 5936 on 44 degrees of freedom
+## Multiple R-squared:  0.7564, Adjusted R-squared:  0.7288 
+## F-statistic: 27.33 on 5 and 44 DF,  p-value: 1.812e-12
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{anova}\NormalTok{(model\_reduced, model\_full)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Model 1: Charges ~ Age + BMI + Female + Children + Smoker
+## Model 2: Charges ~ Age + BMI + Children + Female + Smoker + WinterSprings + 
+##     WinterPark + Oviedo
+##   Res.Df        RSS Df Sum of Sq      F Pr(>F)
+## 1     44 1550157688                           
+## 2     41 1537066491  3  13091196 0.1164   0.95
+\end{verbatim}
+
+Including the cities in the model does not reduce the SSE by a
+statistically significant amount.Independently, the cities did not test
+significant either.
+
+\end{document}
