@@ -64,6 +64,8 @@ Thus .03 < .2.
 
 Interpret the coefficients of all the independent variables that tested significant.
 
+The coefficient of the BMI independent variable was significant, this can provide indications that can affect the dependent variable varying on whether the coefficient of the BMI is positive or negative. A positive coefficient of the BMI provides evidence that as the value of the independent variable increases, the mean of the dependent variable tends to increase. A negative coefficient of the BMI provides evidence that as the value of the independent variable increases, the dependent tends to decrease. The coefficient provides us needed data that shows how much the mean of the dependent variable varies. 
+
 
 ## Question 3
 
