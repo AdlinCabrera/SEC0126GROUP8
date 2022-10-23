@@ -89,7 +89,7 @@ predict(model_full, newdata= newPrediction, interval = "confidence")
 
 
 ```
-The result indicates that the insurance representative can expect the value in medical expenses to be about 31,013.66 and that they can be 95 percent confident that the true value lies somewhere between 24,971.33 and 37,055.99.
+The result indicates that the insurance representative can expect the value in medical expenses to be about 5,961.37 and that they can be 95 percent confident that the true value lies somewhere between 2,002.34 and 9,920.41.
 
 ## Question 4
 
