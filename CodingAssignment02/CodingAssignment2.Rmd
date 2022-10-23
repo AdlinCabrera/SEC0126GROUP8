@@ -57,8 +57,9 @@ Which independent variables test significant in a two-tailed test? Use $\alpha =
 
 
 * <span style="color: green;">BMI would be the significant variable in this two tailed test. **Alpha** = .2, **BMI (tested variable)** =.08. It is the only variable that fits the two tailed test equation:</span> $$p<\alpha$$
-* <span style="color: green;">.08 < .2 is true and significant, and we can reject the hypothesis.</span>
-$$H_0 : \beta (!=) 0$$
+* <span style="color: green;">.08 < .2 is true and significant, and we can reject the hypothesis. With this said, the independent variable significantly affects the dependent variable because the coefficient is different from zero for a two-sided (two-tail) test:</span>
+$$H_0 : \beta_j = 0$$
+$$H_A : \beta_j (!=) 0$$
 
 ## Question 2
 
