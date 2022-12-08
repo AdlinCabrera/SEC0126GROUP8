@@ -18,6 +18,8 @@ library(corrplot)
 library(gt)
 library(plotly)
 library(car)
+library(gt) # for better looking tables
+library(gtsummary) # for better summary statistics
 
 ```
 
@@ -118,9 +120,8 @@ Use the 3 withheld observations and calculate the performance measures for your 
 
 ```{r q5}
 
-## charges and AGE
-
 par(mfrow=c(1,2))
+
 hist(insurance_reduce$Charges) #before
 
 insurance_reduce$LnCharges <- log(insurance_reduce$Charges)
@@ -130,6 +131,7 @@ hist(insurance_reduce$LnCharge) #after
 
 
 par(mfrow=c(1,2))
+
 hist(insurance_reduce$Age) #before
 
 insurance_reduce$LnAge <- log(insurance_reduce$Age)
@@ -139,6 +141,7 @@ hist(insurance_reduce$LnAge) #after
 
 
 par(mfrow=c(1,2))
+
 hist(insurance_reduce$BMI) #before
 
 insurance_reduce$LnBMI <- log(insurance_reduce$BMI)
@@ -148,12 +151,13 @@ hist(insurance_reduce$LnBMI) #after
 
 
 par(mfrow=c(1,2))
+
 hist(insurance_reduce$BMI) #before
 
 
 insurance_reduce$Childrensquared <- insurance_reduce$Children^2
 
-hist(insurance_reduce$BMIsquared) #after
+#hist(insurance_reduce$BMIsquared) #after
 
 
 
@@ -165,9 +169,150 @@ insurance_reduce$LnChildren <- log(insurance_reduce$Children)
 
 hist(insurance_reduce$LnChildren) #after
 
+##LnCharges and LnAge
+
+model_1 <- lm( LnCharges ~., data = insurance_reduce[,c(5,6,3,4)] ) 
+
+summary(model_1)
+
+# or
+
+tbl_regression(model_1,
+               estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
+  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_1)$adj.r.squared* 100,digits = 2),"%")))
+
+par(mfrow=c(2,2))
+plot(model_1)
+
+
+##LnCharges and LnBMI
+
+model_2 <- lm( LnCharges ~., data = insurance_reduce[,c(5,2,7,4)] ) 
+
+summary(model_2)
+
+# or
+
+tbl_regression(model_2,
+               estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
+  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_1)$adj.r.squared* 100,digits = 2),"%")))
+
+par(mfrow=c(2,2))
+plot(model_2)
+
+##LnCharges and sqChildren
+
+model_3 <- lm( LnCharges ~., data = insurance_reduce[,c(5,2,3,8)] ) 
+
+summary(model_3)
+
+# or
+
+tbl_regression(model_3,
+               estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
+  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_1)$adj.r.squared* 100,digits = 2),"%")))
+
+par(mfrow=c(2,2))
+plot(model_3)
+
+##LnAge and LnBMI
+
+model_4 <- lm( Charges ~., data = insurance_reduce[,c(1,6,7,4)] ) 
+
+summary(model_4)
+
+# or
+
+tbl_regression(model_4,
+               estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
+  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_1)$adj.r.squared* 100,digits = 2),"%")))
+
+par(mfrow=c(2,2))
+plot(model_4)
+
+##LnBMI and sqchildren
+
+model_5 <- lm( Charges ~., data = insurance_reduce[,c(1,2,7,8)] ) 
+
+summary(model_5)
+
+# or
+
+tbl_regression(model_5,
+               estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
+  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_1)$adj.r.squared* 100,digits = 2),"%")))
+
+par(mfrow=c(2,2))
+plot(model_5)
+
+##LnAge and sqchildren
+
+model_6 <- lm( Charges ~., data = insurance_reduce[,c(1,6,3,8)] ) 
+
+summary(model_6)
+
+# or
+
+tbl_regression(model_6,
+               estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
+  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_1)$adj.r.squared* 100,digits = 2),"%")))
+
+par(mfrow=c(2,2))
+plot(model_6)
+
+
+##LnCharge and sqchildren
+
+model_7 <- lm( LnCharges ~., data = insurance_reduce[,c(5,2,3,8)] ) 
+
+summary(model_7)
+
+# or
+
+tbl_regression(model_7,
+               estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
+  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_1)$adj.r.squared* 100,digits = 2),"%")))
+
+par(mfrow=c(2,2))
+plot(model_7)
+
+##LnCharge and LnBMI
+
+model_8 <- lm( LnCharges ~., data = insurance_reduce[,c(5,2,7,4)] ) 
+
+summary(model_8)
+
+# or
+
+tbl_regression(model_8,
+               estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
+  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_1)$adj.r.squared* 100,digits = 2),"%")))
+
+par(mfrow=c(2,2))
+plot(model_8)
 
 
 
+
+## Female in model 
+
+insurance_reduce_female <- insurance_train[,c(1:4,5)]
+
+model_female <- lm( Charges ~., data = insurance_reduce_female) 
+
+summary(model_female)
+
+insurance_reduce_smoker <- insurance_train[,c(1:3,5:6)]
+
+model_smoker <- lm( Charges ~., data = insurance_reduce_smoker) 
+
+summary(model_smoker)
+
+insurance_reduce_smoker_female <- insurance_train[,c(1:6)]
+
+model_smoker_female <- lm( Charges ~., data = insurance_reduce_smoker_female) 
+
+summary(model_smoker_female)
 
 
 
