@@ -18,13 +18,10 @@ library(corrplot)
 library(gt)
 library(plotly)
 library(car)
-<<<<<<< HEAD
+
 library(gt) # for better looking tables
 library(gtsummary) # for better summary statistics
 
-=======
-library(gtsummary)
->>>>>>> 920398404c03fed5279a0aa93564edbb5d7930e1
 ```
 
 A Florida health insurance company wants to predict annual claims for individual clients. The company pulls a random sample of 50 customers. The owner wishes to charge an actuarially fair premium to ensure a normal rate of return. The owner collects all of their current customer’s health care expenses from the last year and compares them with what is known about each customer’s plan. 
