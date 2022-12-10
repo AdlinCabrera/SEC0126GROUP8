@@ -67,7 +67,7 @@ insurance_test <- insurance[index,]
 #data set of 47 observations NO DUMMY columns (only 4 quantitative columns)
 insurance_reduce <- insurance_train[,c(1:3,5)]
 
-summary(insurance_reduce)
+summary(insurance_train)
 
 ```
 
@@ -112,67 +112,76 @@ Implement the solutions from question 3, such as data transformation, along with
 
 scatterplotMatrix(insurance_reduce)
 
-```
 
-## Question 5
+## plotting all histogram and transformation 
 
-Use the 3 withheld observations and calculate the performance measures for your best two models. Which is the better model? (remember that "better" depends on whether your outlook is short or long run)
-
-```{r q5}
+## Lncharges -- Logrithmic 
 
 par(mfrow=c(1,2))
 
-hist(insurance_reduce$Charges) #before
+hist(insurance_train$Charges) #before
 
-insurance_reduce$LnCharges <- log(insurance_reduce$Charges)
+insurance_train$LnCharges <- log(insurance_train$Charges)
 
+hist(insurance_train$LnCharge) #after
 
-hist(insurance_reduce$LnCharge) #after
-
-
-par(mfrow=c(1,2))
-
-hist(insurance_reduce$Age) #before
-
-insurance_reduce$LnAge <- log(insurance_reduce$Age)
-
-hist(insurance_reduce$LnAge) #after
-
-
+## charges -- qudratic 
 
 par(mfrow=c(1,2))
 
-hist(insurance_reduce$BMI) #before
+hist(insurance_train$Charges) #before
 
-insurance_reduce$LnBMI <- log(insurance_reduce$BMI)
+insurance_train$Chargessquared <- log(insurance_train$Charges^2)
 
-hist(insurance_reduce$LnBMI) #after
+hist(insurance_train$Chargessquared) #after
+
+## Age - Logrithmic 
+
+par(mfrow=c(1,2))
+
+hist(insurance_train$Age) #before
+
+insurance_train$LnAge <- log(insurance_train$Age)
+
+hist(insurance_train$LnAge) #after
 
 
+## Age - quadratic 
 
 par(mfrow=c(1,2))
 
-hist(insurance_reduce$BMI) #before
+hist(insurance_train$Age) #before
 
+insurance_train$Agesquared <- log(insurance_train$Age^2)
 
-insurance_reduce$Childrensquared <- insurance_reduce$Children^2
+hist(insurance_train$Agesquared) #after
 
-#hist(insurance_reduce$BMIsquared) #after
-
-
-
+## BMI - Logrithmic
 
 par(mfrow=c(1,2))
-hist(insurance_reduce$Children) #before
 
-insurance_reduce$LnChildren <- log(insurance_reduce$Children)
+hist(insurance_train$BMI) #before
 
-hist(insurance_reduce$LnChildren) #after
+insurance_train$LnBMI <- log(insurance_train$BMI)
 
-##LnCharges and LnAge
+hist(insurance_train$LnBMI) #after
 
-model_1 <- lm( LnCharges ~., data = insurance_reduce[,c(5,6,3,4)] ) 
+## BMI - quadratic
 
+par(mfrow=c(1,2))
+
+hist(insurance_train$BMI) #before
+
+insurance_train$BMIsquared <- log(insurance_train$BMI^2)
+
+hist(insurance_train$BMIsquared) #after
+
+
+## testing model with LnCharges with all variable same
+
+# Charges  ~ LnAge + BMIsquared + BMI + Female + Children +Smoker + WinterSprings + WinterPark + Oviedo
+
+model_1 <- lm(LnCharges  ~ Age +  BMI + Female + Children +Smoker + WinterSprings + WinterPark + Oviedo , data = insurance_train) #pulling only columns I want
 summary(model_1)
 
 # or
@@ -184,135 +193,72 @@ tbl_regression(model_1,
 par(mfrow=c(2,2))
 plot(model_1)
 
+##testing model with LnCharges , LnAge , LnBMI ,Children +Smoker
 
-##LnCharges and LnBMI
-
-model_2 <- lm( LnCharges ~., data = insurance_reduce[,c(5,2,7,4)] ) 
-
+model_2 <- lm(LnCharges  ~ LnAge + LnBMI + Female + Children +Smoker , data = insurance_train) #pulling only columns I want
 summary(model_2)
 
 # or
 
 tbl_regression(model_2,
                estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
-  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_1)$adj.r.squared* 100,digits = 2),"%")))
+  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_2)$adj.r.squared* 100,digits = 2),"%")))
 
 par(mfrow=c(2,2))
 plot(model_2)
 
-##LnCharges and sqChildren
+## ##testing model with LnCharges and BMI squared
 
-model_3 <- lm( LnCharges ~., data = insurance_reduce[,c(5,2,3,8)] ) 
-
+model_3 <- lm(LnCharges  ~ LnAge + BMIsquared + BMI + Female + Children +Smoker , data = insurance_train) #pulling only columns I want
 summary(model_3)
 
 # or
 
 tbl_regression(model_3,
                estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
-  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_1)$adj.r.squared* 100,digits = 2),"%")))
+  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_3)$adj.r.squared* 100,digits = 2),"%")))
 
 par(mfrow=c(2,2))
 plot(model_3)
 
-##LnAge and LnBMI
+## ##testing model with LnCharges and AGE squared and LnBMI
 
-model_4 <- lm( Charges ~., data = insurance_reduce[,c(1,6,7,4)] ) 
-
+model_4 <- lm(LnCharges  ~ Agesquared + Age + LnBMI + Female + Children +Smoker , data = insurance_train) #pulling only columns I want
 summary(model_4)
 
 # or
 
 tbl_regression(model_4,
                estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
-  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_1)$adj.r.squared* 100,digits = 2),"%")))
+  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_4)$adj.r.squared* 100,digits = 2),"%")))
 
 par(mfrow=c(2,2))
 plot(model_4)
 
-##LnBMI and sqchildren
+## Testing using LnAge and LnBMI with only Female and Smoker
 
-model_5 <- lm( Charges ~., data = insurance_reduce[,c(1,2,7,8)] ) 
-
+model_5 <- lm(Charges  ~ LnAge + LnBMI + Female +Smoker  , data = insurance_train) #pulling only columns I want
 summary(model_5)
 
 # or
 
 tbl_regression(model_5,
                estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
-  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_1)$adj.r.squared* 100,digits = 2),"%")))
+  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_5)$adj.r.squared* 100,digits = 2),"%")))
 
 par(mfrow=c(2,2))
 plot(model_5)
 
-##LnAge and sqchildren
 
-model_6 <- lm( Charges ~., data = insurance_reduce[,c(1,6,3,8)] ) 
+```
 
-summary(model_6)
+## Question 5
 
-# or
+Use the 3 withheld observations and calculate the performance measures for your best two models. Which is the better model? (remember that "better" depends on whether your outlook is short or long run)
 
-tbl_regression(model_6,
-               estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
-  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_1)$adj.r.squared* 100,digits = 2),"%")))
-
-par(mfrow=c(2,2))
-plot(model_6)
+```{r q5}
 
 
-##LnCharge and sqchildren
-
-model_7 <- lm( LnCharges ~., data = insurance_reduce[,c(5,2,3,8)] ) 
-
-summary(model_7)
-
-# or
-
-tbl_regression(model_7,
-               estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
-  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_1)$adj.r.squared* 100,digits = 2),"%")))
-
-par(mfrow=c(2,2))
-plot(model_7)
-
-##LnCharge and LnBMI
-
-model_8 <- lm( LnCharges ~., data = insurance_reduce[,c(5,2,7,4)] ) 
-
-summary(model_8)
-
-# or
-
-tbl_regression(model_8,
-               estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
-  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_1)$adj.r.squared* 100,digits = 2),"%")))
-
-par(mfrow=c(2,2))
-plot(model_8)
-
-
-
-
-## Female in model 
-
-insurance_reduce_female <- insurance_train[,c(1:4,5)]
-
-model_female <- lm( Charges ~., data = insurance_reduce_female) 
-
-summary(model_female)
-
-insurance_reduce_smoker <- insurance_train[,c(1:3,5:6)]
-
-model_smoker <- lm( Charges ~., data = insurance_reduce_smoker) 
-
-summary(model_smoker)
-
-insurance_reduce_smoker_female <- insurance_train[,c(1:6)]
-
-model_smoker_female <- lm( Charges ~., data = insurance_reduce_smoker_female) 
-
-summary(model_smoker_female)
 
 
 
