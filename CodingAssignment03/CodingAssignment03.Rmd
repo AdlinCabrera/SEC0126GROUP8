@@ -102,13 +102,13 @@ insurance_train %>%
 
 There are 7 variables and 50 observations in the dataset. 47 observations of the variables in the dataset are potential predictor of the of the Insurance charges. From the data collected below are the properties of the statistical distribution. 
 
-Charges: The minimum value of the selected 47 samples was 1640, where the max is 47404, their range was 45764. The mean and medium sample were 13310 and 8968. As mean was larger than the median, the model skewed right. The standard deviation of the sample was 11,706.
+**Charges**: The minimum value of the selected 47 samples was 1640, where the max is 47404, their range was 45764. The mean and medium sample were 13310 and 8968. As mean was larger than the median, the model skewed right. The standard deviation of the sample was 11,706.
 
 * Min. = 1640 ; Max. = 47404 ; Range = 45764
 * Mean = 13310 ; Median = 8968 ; As mean > median, therefore, skewed right.
 * Standard Deviation = 11,706
 
-Age: The minimum value of the selected 47 samples was 19.00,
+**Age**: The minimum value of the selected 47 samples was 19.00,
 where the max was 63.00, their range was 44. The mean and
 the median of the sample size were 40.98 and 41.00. As mean and median are close together, so it will be be symmetric but skewed slightly to the left. The standard deviation of the samples was 13.
 
@@ -116,14 +116,14 @@ the median of the sample size were 40.98 and 41.00. As mean and median are close
 * Mean = 40.98; Median = 41.00 ; As mean and median are close together, so it will be be symmetric but skewed slightly to the left. 
 * Standard deviation = 13
 
-BMI: The minimum value of the selected 47 samples was 18.34, where the maximum was 49.06, their range was 30.72. The mean and
+**BMI**: The minimum value of the selected 47 samples was 18.34, where the maximum was 49.06, their range was 30.72. The mean and
 the median of the sample size were 32.81 and 31.64. Because the mean and median are close together, it will be be symmetric but skewed slightly to the right. The standard deviation of the samples was 6.2.
 
 * Min. = 18.34 ; Max. = 49.06 ; Range = 30.72
 * Mean = 32.81 ; Median = 31.64 ; As mean and median are close together, so it will be be symmetric but skewed slightly to the right. 
 * Standard deviation = 6.2
 
-Children: The minimum value of the selected 47 samples was 0, where the maximum was 5, their range was 5. The mean and the median of the sample size were 1.128 and 1.00. The mean and median are close together, so it will be be symmetric but skewed slightly to the right. The standard deviation of the samples was 4.3.
+**Children**: The minimum value of the selected 47 samples was 0, where the maximum was 5, their range was 5. The mean and the median of the sample size were 1.128 and 1.00. The mean and median are close together, so it will be be symmetric but skewed slightly to the right. The standard deviation of the samples was 4.3.
 
 * Min. = 00.00 ; Max. = 5.00 ; Range = 5.00
 * Mean = 1.128 ; Median = 1.00 ; As mean and median are close together, so it will be be symmetric but skewed slightly to the right. 
@@ -165,11 +165,15 @@ plot(bad_model)
 ```
 
 ### Summary:
-The Gauss Markov Assumptions guarantee the validity of ordinary least squares for estimating regression coefficients. Within our examples of plots we found the following violations: 
-1. The first plot titled “Residuals vs. Fitted,” you do not see a true pattern and it shows that it has a non-linear relationship. This violates a classical assumption.
-2. The second plot titled “Normal Q-Q” shows violates the assumption of a normally distributed dependent variable for a fixed set of predictors. 
-3. The third plot titled “Scale-Location” violates Homoscedasticity. If this assumption were not violated, you’d see random points around a horizontal line. In this case, it is upwards sloping then goes down on the right hand side, so you can see there is a “fanning out” effect.
-4. The last plot “Residuals vs. Leverage” violates regression outliers, influential observations, and high leverage points.
+The **Gauss Markov Assumptions** guarantee the validity of ordinary least squares for estimating regression coefficients. Within our examples of plots we found the following violations: 
+
+ 1. The first plot titled “Residuals vs. Fitted,” you do not see a true pattern and it shows that it has a non-linear relationship. This violates a classical assumption.
+
+ 2. The second plot titled “Normal Q-Q” shows violates the assumption of a normally distributed dependent variable for a fixed set of predictors. 
+
+ 3. The third plot titled “Scale-Location” violates Homoscedasticity. If this assumption were not violated, you’d see random points around a horizontal line. In this case, it is upwards sloping then goes down on the right hand side, so you can see there is a “fanning out” effect.
+
+ 4. The last plot “Residuals vs. Leverage” violates regression outliers, influential observations, and high leverage points.
 
 # Question 4
 
