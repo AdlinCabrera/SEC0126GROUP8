@@ -117,7 +117,6 @@ scatterplotMatrix(insurance_reduce)
 Use the 3 withheld observations and calculate the performance measures for your best two models. Which is the better model? (remember that "better" depends on whether your outlook is short or long run)
 
 ```{r q5}
-
 ## charges and AGE
 
 par(mfrow=c(1,2))
@@ -153,7 +152,7 @@ hist(insurance_reduce$BMI) #before
 
 insurance_reduce$Childrensquared <- insurance_reduce$Children^2
 
-hist(insurance_reduce$BMIsquared) #after
+#hist(insurance_reduce$BMIsquared) #after
 
 
 
