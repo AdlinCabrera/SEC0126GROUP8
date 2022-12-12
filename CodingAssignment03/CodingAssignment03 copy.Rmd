@@ -58,6 +58,223 @@ Provide the correlation between all quantitative variables
 Run a regression that includes all independent variables in the data table. Does the model above violate any of the Gauss-Markov assumptions? If so, what are they and what is the solution for correcting?
 
 
+par(mfrow=c(1,2))
+
+hist(insurance_train$Charges) #before
+
+insurance_train$LnCharges <- log(insurance_train$Charges)
+
+
+hist(insurance_train$LnCharge) #after
+
+
+par(mfrow=c(1,2))
+
+hist(insurance_train$Age) #before
+
+insurance_train$LnAge <- log(insurance_train$Age)
+
+hist(insurance_train$LnAge) #after
+
+
+
+par(mfrow=c(1,2))
+
+hist(insurance_train$BMI) #before
+
+insurance_train$LnBMI <- log(insurance_train$BMI)
+
+hist(insurance_train$LnBMI) #after
+
+
+
+par(mfrow=c(1,2))
+
+hist(insurance_train$BMI) #before
+
+
+insurance_train$Childrensquared <- insurance_train$Children^2
+
+#hist(insurance_train$BMIsquared) #after
+
+par(mfrow=c(1,2))
+
+hist(insurance_train$Female) #before
+
+
+insurance_train$Femalesquared <- insurance_train$Female^2
+
+#hist(insurance_train$BMIsquared) #after
+
+
+par(mfrow=c(1,2))
+hist(insurance_train$Children) #before
+
+insurance_train$LnChildren <- log(insurance_train$Children)
+
+hist(insurance_train$LnChildren) #after
+
+par(mfrow=c(1,2))
+hist(insurance_train$Children) #before
+
+insurance_train$LnAge_Smoker <- insurance_train$LnAge*insurance_train$Smoker
+
+hist(insurance_train$LnChildren) #after
+
+##LnCharges and LnAge
+
+model_1 <- lm( LnCharges ~., data = insurance_train[,c(3:11)] ) 
+
+summary(model_1)
+
+# or
+
+tbl_regression(model_1,
+               estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
+  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_1)$adj.r.squared* 100,digits = 2),"%")))
+
+par(mfrow=c(2,2))
+plot(model_1)
+
+
+##LnCharges and LnBMI
+
+model_2 <- lm( LnCharges ~., data = insurance_train[,c(2:10,12)] ) 
+
+summary(model_2)
+
+# or
+
+tbl_regression(model_2,
+               estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
+  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_1)$adj.r.squared* 100,digits = 2),"%")))
+
+par(mfrow=c(2,2))
+plot(model_2)
+
+##LnCharges and sqChildren
+
+model_3 <- lm( LnCharges ~., data = insurance_train[,c(2:10,13)] ) 
+
+summary(model_3)
+
+# or
+
+tbl_regression(model_3,
+               estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
+  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_1)$adj.r.squared* 100,digits = 2),"%")))
+
+par(mfrow=c(2,2))
+plot(model_3)
+
+##LnAge and LnBMI
+
+model_4 <- lm( LnCharges ~., data = insurance_train[,c(4:12)] ) 
+
+summary(model_4)
+
+# or
+
+tbl_regression(model_4,
+               estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
+  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_1)$adj.r.squared* 100,digits = 2),"%")))
+
+par(mfrow=c(2,2))
+plot(model_4)
+
+##LnBMI and sqchildren
+
+model_5 <- lm( Charges ~., data = insurance_train[,c(1,2,7,8)] ) 
+
+summary(model_5)
+
+# or
+
+tbl_regression(model_5,
+               estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
+  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_1)$adj.r.squared* 100,digits = 2),"%")))
+
+par(mfrow=c(2,2))
+plot(model_5)
+
+##LnAge and sqchildren
+
+model_6 <- lm( Charges ~., data = insurance_train[,c(1,6,3,8)] ) 
+
+summary(model_6)
+
+# or
+
+tbl_regression(model_6,
+               estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
+  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_1)$adj.r.squared* 100,digits = 2),"%")))
+
+par(mfrow=c(2,2))
+plot(model_6)
+
+
+##LnCharge and sqchildren
+
+model_7 <- lm( LnCharges ~., data = insurance_train[,c(5,2,3,8)] ) 
+
+summary(model_7)
+
+# or
+
+tbl_regression(model_7,
+               estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
+  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_1)$adj.r.squared* 100,digits = 2),"%")))
+
+par(mfrow=c(2,2))
+plot(model_7)
+
+##LnCharge and LnBMI
+
+model_8 <- lm( LnCharges ~., data = insurance_train[,c(5,2,7,4)] ) 
+
+summary(model_8)
+
+# or
+
+tbl_regression(model_8,
+               estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
+  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_1)$adj.r.squared* 100,digits = 2),"%")))
+
+par(mfrow=c(2,2))
+plot(model_8)
+
+
+#test 
+
+model_test <- lm( LnCharges ~., data = insurance_train[,c(11,12,5,4,6,10,16)] )           
+
+summary(model_test)
+
+par(mfrow=c(2,2))
+plot(model_test)
+
+## Female in model 
+
+insurance_train_female <- insurance_train[,c(1:4,5)]
+
+model_female <- lm( Charges ~., data = insurance_train_female) 
+
+summary(model_female)
+
+insurance_train_smoker <- insurance_train[,c(1:3,5:6)]
+
+model_smoker <- lm( Charges ~., data = insurance_train_smoker) 
+
+summary(model_smoker)
+
+insurance_train_smoker_female <- insurance_train[,c(1:6)]
+
+model_smoker_female <- lm( Charges ~., data = insurance_train_smoker_female) 
+
+summary(model_smoker_female)
+
+
+
 ## Question 4
 
 Implement the solutions from question 3, such as data transformation, along with any other changes you wish. Use the sample data and run a new regression. How have the fit measures changed? How have the signs and significance of the coefficients changed?
