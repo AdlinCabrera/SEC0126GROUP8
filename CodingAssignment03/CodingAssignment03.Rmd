@@ -22,9 +22,9 @@ library(car)
 library(gt) # for better looking tables
 library(gtsummary) # for better summary statistics
 library(tidyverse)
-library(dbplyr)
-library(gridExtra)
-library(cowplot)
+#library(dbplyr)
+#library(gridExtra)
+#library(cowplot)
 
 ```
 
