@@ -576,7 +576,9 @@ mape(insurance_test$error_6, insurance_test$Charges)
 mape(insurance_test$error_7, insurance_test$Charges)
 
 ```
+### Summary: 
 
+Looking at the 7 Models, 5 and 7 are our best models. Model 7 is a good fit for a short-run, while Model 5 is a best fit for a long-run. Based on our time preference, we picked Model 5 as the best model because it tests significant and has lower BIAS, MAE, RMSE, and MAPE.  
 
 # Question 6
 
