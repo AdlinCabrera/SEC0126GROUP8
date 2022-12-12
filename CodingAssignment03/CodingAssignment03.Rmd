@@ -146,6 +146,8 @@ diag = FALSE)
 
 ```
 ##Summary
+Based off the correlation matrix and the seven variables found in the data set above you can see that the variables have high weak correlation with one another. Of all 7 variables we found the weakest correlation between “charges”, “age”, “children”, and “BMI”. 
+
 
 # Question 3
 
@@ -160,7 +162,12 @@ par(mfrow=c(2,2))
 plot(bad_model)
 
 ```
-
+##Summary
+The Gauss Markov Assumptions guarantee the validity of ordinary least squares for estimating regression coefficients. Within our examples of plots we found the following violations: 
+1. The first plot titled “Residuals vs. Fitted,” you do not see a true pattern and it shows that it has a non-linear relationship. This violates a classical assumption.
+2. The second plot titled “Normal Q-Q” shows violates the assumption of a normally distributed dependent variable for a fixed set of predictors. 
+3. The third plot titled “Scale-Location” violates Homoscedasticity. If this assumption were not violated, you’d see random points around a horizontal line. In this case, it is upwards sloping then goes down on the right hand side, so you can see there is a “fanning out” effect.
+4. The last plot “Residuals vs. Leverage” violates regression outliers, influential observations, and high leverage points.
 
 # Question 4
 
