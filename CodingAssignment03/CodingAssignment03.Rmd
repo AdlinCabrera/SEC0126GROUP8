@@ -98,6 +98,36 @@ insurance_train %>%
 )
 
 ```
+### Summary: 
+
+There are 7 variables and 50 observations in the dataset. 47 observations of the variables in the dataset are potential predictor of the of the Insurance charges. From the data collected below are the properties of the statistical distribution. 
+
+Charges: The minimum value of the selected 47 samples was 1640, where the max is 47404, their range was 45764. The mean and medium sample were 13310 and 8968. As mean was larger than the median, the model skewed right. The standard deviation of the sample was 11,706.
+
+* Min. = 1640 ; Max. = 47404 ; Range = 45764
+* Mean = 13310 ; Median = 8968 ; As mean > median, therefore, skewed right.
+* Standard Deviation = 11,706
+
+Age: The minimum value of the selected 47 samples was 19.00,
+where the max was 63.00, their range was 44. The mean and
+the median of the sample size were 40.98 and 41.00. As mean and median are close together, so it will be be symmetric but skewed slightly to the left. The standard deviation of the samples was 13.
+
+* Min. = 19.00 ; Max. = 63.00 ; Range = 44
+* Mean = 40.98; Median = 41.00 ; As mean and median are close together, so it will be be symmetric but skewed slightly to the left. 
+* Standard deviation = 13
+
+BMI: The minimum value of the selected 47 samples was 18.34, where the maximum was 49.06, their range was 30.72. The mean and
+the median of the sample size were 32.81 and 31.64. Because the mean and median are close together, it will be be symmetric but skewed slightly to the right. The standard deviation of the samples was 6.2.
+
+* Min. = 18.34 ; Max. = 49.06 ; Range = 30.72
+* Mean = 32.81 ; Median = 31.64 ; As mean and median are close together, so it will be be symmetric but skewed slightly to the right. 
+* Standard deviation = 6.2
+
+Children: The minimum value of the selected 47 samples was 0, where the maximum was 5, their range was 5. The mean and the median of the sample size were 1.128 and 1.00. The mean and median are close together, so it will be be symmetric but skewed slightly to the right. The standard deviation of the samples was 4.3.
+
+* Min. = 00.00 ; Max. = 5.00 ; Range = 5.00
+* Mean = 1.128 ; Median = 1.00 ; As mean and median are close together, so it will be be symmetric but skewed slightly to the right. 
+* Standard deviation = 4.3
 
 
 # Question 2
@@ -115,7 +145,7 @@ addCoef.col = "black",
 diag = FALSE)
 
 ```
-
+##Summary
 
 # Question 3
 
@@ -332,7 +362,7 @@ plot(model_7)
 
 ```
 
-## Question 5
+# Question 5
 
 Use the 3 withheld observations and calculate the performance measures for your best two models. Which is the better model? (remember that "better" depends on whether your outlook is short or long run)
 
@@ -512,7 +542,7 @@ mape(insurance_test$error_7, insurance_test$Charges)
 ```
 
 
-## Question 6
+# Question 6
 
 Provide interpretations of the coefficients, do the signs make sense? Perform marginal change analysis (thing 2) on the independent variables.
 
@@ -532,7 +562,7 @@ summary(model_7)
 
 ```
 
-## Question 7
+# Question 7
 
 An eager insurance representative comes back with five potential clients. Using the better of the two models selected above, provide the prediction intervals for the five potential clients using the information provided by the insurance rep.
 
@@ -590,11 +620,11 @@ predict(model_7, newdata= Client_5, interval = "prediction")
 
 ```
 
-## Question 8
+# Question 8
 
 The owner notices that some of the predictions are wider than others, explain why.
 
-## Question 9 
+# Question 9 
 
 Are there any prediction problems that occur with the five potential clients? If so, explain.
 
