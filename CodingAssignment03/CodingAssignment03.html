@@ -5996,6 +5996,17 @@ summary(model_7)</code></pre>
 ## Residual standard error: 0.4245 on 41 degrees of freedom
 ## Multiple R-squared:  0.7806, Adjusted R-squared:  0.7538 
 ## F-statistic: 29.17 on 5 and 41 DF,  p-value: 1.681e-12</code></pre>
+<div id="summary-5" class="section level3">
+<h3>Summary:</h3>
+<p>After reviewing the coefficients, the coefficient signs for Age, BMI,
+smoker and/or male tested significant and have a direct relationship
+with the dependent variable (Charges).</p>
+<p>And if you think about it logically, getting pregnant and/or having a
+child will increase medical charges and premiums. Smoking will also have
+a direct and positive coefficient because being a smoker will only
+increase medical costs. For Age and BMI each year, it will increase.
+Because if you change x by one, we’d expect y to change by β1.</p>
+</div>
 </div>
 <div id="question-7" class="section level1">
 <h1>Question 7</h1>
@@ -6112,7 +6123,7 @@ predict(model_7, newdata= Client_1, interval = &quot;prediction&quot;)</code></p
 <pre class="r"><code>predict(model_7, newdata= Client_5, interval = &quot;prediction&quot;)</code></pre>
 <pre><code>##        fit      lwr      upr
 ## 1 9.216917 8.304556 10.12928</code></pre>
-<div id="summary-5" class="section level3">
+<div id="summary-6" class="section level3">
 <h3>Summary:</h3>
 <p>The result indicates that for Client 1 the insurance representative
 can expect the value in medical expenses to be about 11,595.40 and that
@@ -6140,7 +6151,7 @@ between 0 and 22,471.03.</p>
 <h1>Question 8</h1>
 <p>The owner notices that some of the predictions are wider than others,
 explain why.</p>
-<div id="summary-6" class="section level3">
+<div id="summary-7" class="section level3">
 <h3>Summary:</h3>
 <p>The prediction interval predicts in what range a future individual
 observation will fall. Predictions for Clients 1 and 3 seem to be wider
@@ -6153,7 +6164,7 @@ being a Smoker. Both factors may lead to more medical expenses.</p>
 <h1>Question 9</h1>
 <p>Are there any prediction problems that occur with the five potential
 clients? If so, explain.</p>
-<div id="summary-7" class="section level3">
+<div id="summary-8" class="section level3">
 <h3>Summary:</h3>
 <p>The minimums for Clients 1,2, 4, and 5 are negative. This is likely
 due to the low number of observations, which can cause the model to have
