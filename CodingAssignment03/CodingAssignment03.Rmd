@@ -6,6 +6,7 @@ output:
   html_document:
     toc: true
     toc_float: true
+    
 ---
 
 ```{r setup, include=FALSE}
@@ -22,9 +23,7 @@ library(car)
 library(gt) # for better looking tables
 library(gtsummary) # for better summary statistics
 library(tidyverse)
-#library(dbplyr)
-#library(gridExtra)
-#library(cowplot)
+
 
 ```
 
@@ -44,7 +43,7 @@ Answer the following questions using complete sentences and attach all output, p
 
 
 ```{r dataset, include=FALSE}
-# Bring in the dataset here.
+# (H1)  Bring in the dataset here.
 
 insurance <- read.csv("../Data/insurance_0126_Group8.csv")
 
@@ -54,7 +53,7 @@ gt(head(insurance))
 
 
 
-## Question 1
+# Question 1
 
 Randomly select three observations from the sample and exclude from all modeling (i.e. n=47). Provide the summary statistics (min, max, std, mean, median) of the quantitative variables for the 47 observations.
 
@@ -97,10 +96,11 @@ insurance_train %>%
                               all_categorical() ~ "{n} / {N} ({p}%)"),
               type = all_continuous() ~ "continuous2"
 )
+
 ```
 
 
-## Question 2
+# Question 2
 
 Provide the correlation between all quantitative variables
 
@@ -117,7 +117,7 @@ diag = FALSE)
 ```
 
 
-## Question 3
+# Question 3
 
 Run a regression that includes all independent variables in the data table. Does the model above violate any of the Gauss-Markov assumptions? If so, what are they and what is the solution for correcting?
 
@@ -132,100 +132,107 @@ plot(bad_model)
 ```
 
 
-## Question 4
+# Question 4
 
 Implement the solutions from question 3, such as data transformation, along with any other changes you wish. Use the sample data and run a new regression. How have the fit measures changed? How have the signs and significance of the coefficients changed?
 
-```{r q4}
+
+
+```{r q4_1}
+
+## Scatterplot for quantitative variable
 
 scatterplotMatrix(insurance_reduce)
 
 
 ## plotting all histogram and transformation 
 
-## Lncharges -- Logrithmic 
+
+# Lncharges -- Logrithmic 
 
 par(mfrow=c(1,2))
 
-hist(insurance_train$Charges) #before
+hist(insurance_train$Charges, main="Charges") #before
 
 insurance_train$LnCharges <- log(insurance_train$Charges)
 
-hist(insurance_train$LnCharge) #after
+hist(insurance_train$LnCharge,main="LnCharges") #after
 
 ## charges -- qudratic 
 
 par(mfrow=c(1,2))
 
-hist(insurance_train$Charges) #before
+hist(insurance_train$Charges, main="Charges") #before
 
 insurance_train$Chargessquared <- log(insurance_train$Charges^2)
 
-hist(insurance_train$Chargessquared) #after
+hist(insurance_train$Chargessquared, main="Chargesquared") #after
 
 ## Age - Logrithmic 
 
 par(mfrow=c(1,2))
 
-hist(insurance_train$Age) #before
+hist(insurance_train$Age, main="Age") #before
 
 insurance_train$LnAge <- log(insurance_train$Age)
 
-hist(insurance_train$LnAge) #after
+hist(insurance_train$LnAge, main="LnAge") #after
 
 
 ## Age - quadratic 
 
 par(mfrow=c(1,2))
 
-hist(insurance_train$Age) #before
+hist(insurance_train$Age, main="Age") #before
 
 insurance_train$Agesquared <- log(insurance_train$Age^2)
 
-hist(insurance_train$Agesquared) #after
+hist(insurance_train$Agesquared, main="Agesquared") #after
 
 ## BMI - Logrithmic
 
 par(mfrow=c(1,2))
 
-hist(insurance_train$BMI) #before
+hist(insurance_train$BMI, main="BMI") #before
 
 insurance_train$LnBMI <- log(insurance_train$BMI)
 
-hist(insurance_train$LnBMI) #after
+hist(insurance_train$LnBMI, main="LnBMI") #after
 
 ## BMI - quadratic
 
 par(mfrow=c(1,2))
 
-hist(insurance_train$BMI) #before
+hist(insurance_train$BMI, main="BMI") #before
 
 insurance_train$BMIsquared <- log(insurance_train$BMI^2)
 
-hist(insurance_train$BMIsquared) #after
+hist(insurance_train$BMIsquared, main="BMIsquared") #after
 
-##Only Male charges
+##Only Male charges -- we tried to seperate male in to category 
 
 insurance_train$Maleonly <- insurance_train$Female =="0"
 
-##Only Female charges
+##Only Female charges - we tried to seperate female in to category
 
 insurance_train$Femaleonly <- insurance_train$Female =="1"
 
-##Only nonsmoker
+##Only nonsmoker - We tried to seperate non smoker in to category
 
 insurance_train$nonsmokeronly <- insurance_train$Smoker =="0"
 
-##Only smoker
+##Only smoker - We tried to seperate smoker in to category
 
 insurance_train$smokeronly <- insurance_train$Smoker =="1"
 
+#Testing Different Models 
 
-## testing model with LnCharges with all variable same
 
-# Charges  ~ LnAge + BMIsquared + BMI + Female + Children +Smoker + WinterSprings + WinterPark + Oviedo
+## Testing model with LnCharges with all variable same
+
 
 model_1 <- lm(LnCharges  ~ Age +  BMI + Female + Children +Smoker + WinterSprings + WinterPark + Oviedo , data = insurance_train) #pulling only columns I want
+
 summary(model_1)
 
 
@@ -252,7 +259,7 @@ tbl_regression(model_2,
 par(mfrow=c(2,2))
 plot(model_2)
 
-## ##testing model with LnCharges and BMI squared
+##testing model with LnCharges and BMI squared
 
 model_3 <- lm(LnCharges  ~ LnAge + BMIsquared + BMI + Female + Children +Smoker , data = insurance_train) #pulling only columns I want
 summary(model_3)
