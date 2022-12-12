@@ -375,7 +375,6 @@ plot(model_7)
 
 ```
 
-
 ### Summary: 
 
 Looking at the scatter plot and histograms, we only included quantitative variables, and excluded all others. The scatter plot matrix showed some non-linear relationships and non-normally distributed variables.  
@@ -386,7 +385,6 @@ Model 1: By taking the log of Charges, Age, BMI, Female, Children, Smoker, Winte
 
 Model 2: By taking the log of Charges, Age, BMI, Female, Children, and Smoker we can see that Age, BMI, Female, and Smoker test significant and have multiple R2 of 78%. Additionally, the residual standard error is 0.4245.
 
- 
 Model 3: By taking the log of Charges, Age, BMI squared, Female, Children, and Smoker we can see that Age, Female, and Smoker test significant and have multiple R2 of 78%. Additionally, the residual standard error is 0.4296.
 
 Model 4: By taking the log of Charges, Age squared, Age, BMI, Female, Children, and Smoker we can see that BMI, Female, and Smoker test significant and have multiple R2 of 78%. Additionally, the residual standard error is 0.4289.
