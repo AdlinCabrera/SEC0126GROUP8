@@ -72,7 +72,23 @@ insurance_test <- insurance[index,]
 #data set of 47 observations NO DUMMY columns (only 4 quantitative columns)
 insurance_reduce <- insurance_train[,c(1:3,5)]
 
-summary(insurance_train)
+summary(insurance_reduce)
+
+## [1] Standard deviation for Charges
+
+sd(insurance_train$Charges)
+
+## [1] Standard deviation for Age
+
+sd(insurance_train$Age)
+
+## [1] Standard deviation for BMI
+
+sd(insurance_train$BMI)
+
+## [1] Standard deviation for Children
+
+sd(insurance_train$Children)
 
 insurance_train %>% 
   tbl_summary(statistic = list(all_continuous() ~ c("{mean} ({sd})",
@@ -90,7 +106,7 @@ Provide the correlation between all quantitative variables
 
 ```{r q2}
 
-corrplot(cor(insurance_reduce),
+corrplot(cor(insurance_train[,c(1:3,5)]),
 type = "lower",
 order = "hclust",
 tl.col = "black",
@@ -264,9 +280,9 @@ tbl_regression(model_4,
 par(mfrow=c(2,2))
 plot(model_4)
 
-## Testing using LnAge and LnBMI with only Female and Smoker
+## Testing using LnCharges LnAge and LnBMI with only Female and Smoker
 
-model_5 <- lm(Charges  ~ LnAge + LnBMI + Female +Smoker  , data = insurance_train) #pulling only columns I want
+model_5 <- lm(LnCharges  ~ LnAge + LnBMI + Female +Smoker  , data = insurance_train) #pulling only columns I want
 summary(model_5)
 
 # or
@@ -342,13 +358,13 @@ insurance_test$bad_model_pred <- predict(bad_model, newdata = insurance_test)
 insurance_test$model_1_pred <- predict(model_1,newdata = insurance_test) %>% exp()
 insurance_test$model_2_pred <- predict(model_2,newdata = insurance_test) %>% exp()
 
-insurance_test$model_3_pred <- predict(model_1,newdata = insurance_test) %>% exp()
-insurance_test$model_4_pred <- predict(model_2,newdata = insurance_test) %>% exp()
+insurance_test$model_3_pred <- predict(model_3,newdata = insurance_test) %>% exp()
+insurance_test$model_4_pred <- predict(model_4,newdata = insurance_test) %>% exp()
 
-insurance_test$model_5_pred <- predict(model_1,newdata = insurance_test) %>% exp()
-insurance_test$model_6_pred <- predict(model_2,newdata = insurance_test) %>% exp()
+insurance_test$model_5_pred <- predict(model_5,newdata = insurance_test) %>% exp()
+insurance_test$model_6_pred <- predict(model_6,newdata = insurance_test) %>% exp()
 
-insurance_test$model_7_pred <- predict(model_1,newdata = insurance_test) %>% exp()
+insurance_test$model_7_pred <- predict(model_7,newdata = insurance_test) %>% exp()
 
 # Finding the error
 insurance_test$error_bm <- insurance_test$bad_model_pred - insurance_test$Charges
@@ -455,7 +471,7 @@ rmse(insurance_test$error_7)
 
 ### MAPE
 
-```{r}
+
 mape <- function(error_vector, actual_vector){
   (error_vector/actual_vector) %>% 
     abs() %>% 
