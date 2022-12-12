@@ -171,7 +171,7 @@ The **Gauss Markov Assumptions** guarantee the validity of ordinary least square
 
  2. The second plot titled “Normal Q-Q” shows violates the assumption of a normally distributed dependent variable for a fixed set of predictors. 
 
- 3. The third plot titled “Scale-Location” violates Homoscedasticity. If this assumption were not violated, you’d see random points around a horizontal line. In this case, it is upwards sloping then goes down on the right hand side, so you can see there is a “fanning out” effect.
+ 3. The third plot titled “Scale-Location” violates Heteroscedasticity. If this assumption were not violated, you’d see random points around a horizontal line. In this case, it is upwards sloping then goes down on the right hand side, so you can see there is a “fanning out” effect.
 
  4. The last plot “Residuals vs. Leverage” violates regression outliers, influential observations, and high leverage points.
 
