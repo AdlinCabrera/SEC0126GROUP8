@@ -604,8 +604,6 @@ After reviewing the coefficients, the coefficient signs for Age, BMI, smoker, fe
 And if you think about it logically, getting pregnant and/or having a child will increase medical charges and premiums. Smoking will also have a direct and positive coefficient because being a smoker will only increase medical costs. For Age and BMI each year, it will increase. Because if you change x by one, we’d expect y to change by β1.
 
 
-
-
 # Question 7
 
 An eager insurance representative comes back with five potential clients. Using the better of the two models selected above, provide the prediction intervals for the five potential clients using the information provided by the insurance rep.
