@@ -21,6 +21,10 @@ library(car)
 
 library(gt) # for better looking tables
 library(gtsummary) # for better summary statistics
+library(tidyverse)
+library(dbplyr)
+library(gridExtra)
+library(cowplot)
 
 ```
 
@@ -184,6 +188,22 @@ insurance_train$BMIsquared <- log(insurance_train$BMI^2)
 
 hist(insurance_train$BMIsquared) #after
 
+##Only Male charges
+
+insurance_train$Maleonly <- insurance_train$Female =="0"
+
+##Only Female charges
+
+insurance_train$Femaleonly <- insurance_train$Female =="1"
+
+##Only nonsmoker
+
+insurance_train$nonsmokeronly <- insurance_train$Smoker =="0"
+
+##Only smoker
+
+insurance_train$smokeronly <- insurance_train$Smoker =="1"
+
 
 ## testing model with LnCharges with all variable same
 
@@ -191,6 +211,7 @@ hist(insurance_train$BMIsquared) #after
 
 model_1 <- lm(LnCharges  ~ Age +  BMI + Female + Children +Smoker + WinterSprings + WinterPark + Oviedo , data = insurance_train) #pulling only columns I want
 summary(model_1)
+
 
 # or
 
@@ -258,6 +279,34 @@ par(mfrow=c(2,2))
 plot(model_5)
 
 
+## Testing LnCharges to only Maleonly + smoker 
+
+model_6 <- lm(LnCharges  ~ LnAge +  LnBMI  + smokeronly + Maleonly  , data = insurance_train) #pulling only columns I want
+summary(model_6)
+
+# or
+
+tbl_regression(model_6,
+               estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
+  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_6)$adj.r.squared* 100,digits = 2),"%")))
+
+par(mfrow=c(2,2))
+plot(model_6)
+
+## Testing LnCharges to only maleonly smoker + children
+
+model_7 <- lm(LnCharges  ~ LnAge +  LnBMI  + smokeronly + Maleonly + Children   , data = insurance_train) #pulling only columns I want
+summary(model_7)
+
+# or
+
+tbl_regression(model_7,
+               estimate_fun =  ~style_sigfig(.x, digits = 4)) %>% as_gt() %>%
+  gt::tab_source_note(gt::md(paste0("Adjusted R-Squared: ",round(summary(model_7)$adj.r.squared* 100,digits = 2),"%")))
+
+par(mfrow=c(2,2))
+plot(model_7)
+
 ```
 
 ## Question 5
@@ -266,9 +315,176 @@ Use the 3 withheld observations and calculate the performance measures for your 
 
 ```{r q5}
 
+insurance_test$LnCharges <- log(insurance_test$Charges)
+
+insurance_test$Chargessquared <- log(insurance_test$Charges^2)
+
+insurance_test$LnAge <- log(insurance_test$Age)
+
+insurance_test$Agesquared <- log(insurance_test$Age^2)
+
+insurance_test$LnBMI <- log(insurance_test$BMI)
+
+
+insurance_test$BMIsquared <- log(insurance_test$BMI^2)
+
+insurance_test$Maleonly <- insurance_test$Female =="0"
+
+insurance_test$Femaleonly <- insurance_test$Female =="1"
+
+insurance_test$nonsmokeronly <- insurance_test$Smoker =="0"
+
+insurance_test$smokeronly <- insurance_test$Smoker =="1"
 
 
 
+insurance_test$bad_model_pred <- predict(bad_model, newdata = insurance_test)
+insurance_test$model_1_pred <- predict(model_1,newdata = insurance_test) %>% exp()
+insurance_test$model_2_pred <- predict(model_2,newdata = insurance_test) %>% exp()
+
+insurance_test$model_3_pred <- predict(model_1,newdata = insurance_test) %>% exp()
+insurance_test$model_4_pred <- predict(model_2,newdata = insurance_test) %>% exp()
+
+insurance_test$model_5_pred <- predict(model_1,newdata = insurance_test) %>% exp()
+insurance_test$model_6_pred <- predict(model_2,newdata = insurance_test) %>% exp()
+
+insurance_test$model_7_pred <- predict(model_1,newdata = insurance_test) %>% exp()
+
+# Finding the error
+insurance_test$error_bm <- insurance_test$bad_model_pred - insurance_test$Charges
+insurance_test$error_1 <- insurance_test$model_1_pred - insurance_test$Charges
+insurance_test$error_2 <- insurance_test$model_2_pred - insurance_test$Charges
+insurance_test$error_3 <- insurance_test$model_3_pred - insurance_test$Charges
+insurance_test$error_4 <- insurance_test$model_4_pred - insurance_test$Charges
+insurance_test$error_5 <- insurance_test$model_5_pred - insurance_test$Charges
+insurance_test$error_6 <- insurance_test$model_6_pred - insurance_test$Charges
+insurance_test$error_7 <- insurance_test$model_7_pred - insurance_test$Charges
+
+#Bias
+# Bad Model
+mean(insurance_test$error_bm)
+
+# Model 1
+mean(insurance_test$error_1)
+
+# Model 2
+mean(insurance_test$error_2)
+
+# Model 3
+mean(insurance_test$error_3)
+
+# Model 4
+mean(insurance_test$error_4)
+
+# Model 5
+mean(insurance_test$error_5)
+
+# Model 6
+mean(insurance_test$error_6)
+
+# Model 7
+mean(insurance_test$error_7)
+
+
+#MAE
+#  function to calculate this
+mae <- function(error_vector){
+error_vector %>%
+abs() %>%
+mean()
+}
+# Bad Model
+mae(insurance_test$error_bm)
+
+# Model 1
+mae(insurance_test$error_1)
+
+# Model 2
+mae(insurance_test$error_2)
+
+# Model 3
+mae(insurance_test$error_3)
+
+# Model 4
+mae(insurance_test$error_4)
+
+# Model 5
+mae(insurance_test$error_5)
+
+# Model 6
+mae(insurance_test$error_6)
+
+# Model 7
+mae(insurance_test$error_7)
+
+
+##RMSE
+rmse <- function(error_vector){
+   error_vector^2 %>% 
+  mean() %>% 
+  sqrt()
+
+}
+
+# Bad Model
+rmse(insurance_test$error_bm)
+
+# Model 1
+rmse(insurance_test$error_1)
+
+
+# Model 2
+rmse(insurance_test$error_2)
+
+# Model 3
+rmse(insurance_test$error_3)
+
+# Model 4
+rmse(insurance_test$error_4)
+
+# Model 5
+rmse(insurance_test$error_5)
+
+# Model 6
+rmse(insurance_test$error_6)
+
+# Model 7
+rmse(insurance_test$error_7)
+
+
+
+### MAPE
+
+```{r}
+mape <- function(error_vector, actual_vector){
+  (error_vector/actual_vector) %>% 
+    abs() %>% 
+    mean()
+}
+
+# Bad Model
+mape(insurance_test$error_bm, insurance_test$Charges)
+
+# Model 1
+mape(insurance_test$error_1, insurance_test$Charges)
+
+# Model 2
+mape(insurance_test$error_2, insurance_test$Charges)
+
+# Model 3
+mape(insurance_test$error_3, insurance_test$Charges)
+
+# Model 4
+mape(insurance_test$error_4, insurance_test$Charges)
+
+# Model 5
+mape(insurance_test$error_5, insurance_test$Charges)
+
+# Model 6
+mape(insurance_test$error_6, insurance_test$Charges)
+
+# Model 7
+mape(insurance_test$error_7, insurance_test$Charges)
 
 ```
 
@@ -278,6 +494,18 @@ Use the 3 withheld observations and calculate the performance measures for your 
 Provide interpretations of the coefficients, do the signs make sense? Perform marginal change analysis (thing 2) on the independent variables.
 
 ```{r}
+
+## BEST MODEL MODEL 5
+## Testing using LnAge and LnBMI with only Female and Smoker
+
+model_5 <- lm(Charges  ~ LnAge + LnBMI + Female +Smoker  , data = insurance_train) #pulling only columns I want
+summary(model_5)
+
+## BEST MODEL MODEL 7
+## Testing LnCharges to only maleonly smoker + children
+
+model_7 <- lm(LnCharges  ~ LnAge +  LnBMI  + smokeronly + Maleonly + Children   , data = insurance_train) #pulling only columns I want
+summary(model_7)
 
 ```
 
@@ -295,6 +523,47 @@ An eager insurance representative comes back with five potential clients. Using 
 
 
 ```{r}
+
+Client_1 <- data.frame(LnAge = log(60) , LnBMI = log(22) , Age = 60, BMI = 22, Children = 0, Female = 1, Smoker = 0, WinterSprings = 0, WinterPark = 0, Oviedo = 1)
+Client_2 <- data.frame(LnAge = log(40),LnBMI = log(30), Age = 40, BMI = 30, Children = 1, Female = 0, Smoker = 0, WinterSprings = 0, WinterPark = 0, Oviedo = 0)
+Client_3 <- data.frame(LnAge = log(25),LnBMI = log(25), Age = 25, BMI = 25, Children = 0, Female = 0, Smoker = 1, WinterSprings = 0, WinterPark = 1, Oviedo = 0)
+Client_4 <- data.frame(LnAge = log(33),LnBMI = log(35), Age = 33, BMI = 35, Children = 2, Female = 1, Smoker = 0, WinterSprings = 1, WinterPark = 0, Oviedo = 1)
+Client_5 <- data.frame(LnAge = log(45),LnBMI = log(27), Age = 45, BMI = 27, Children = 3, Female = 1, Smoker = 0, WinterSprings = 0, WinterPark = 0, Oviedo = 1)
+
+### Prediction based on model_5
+
+## model_5 <- lm(Charges  ~ LnAge + LnBMI + Female +Smoker  , data = insurance_train)
+
+predict(model_5, newdata= Client_1, interval = "prediction")
+
+predict(model_5, newdata= Client_2, interval = "prediction")
+
+predict(model_5, newdata= Client_3, interval = "prediction")
+
+predict(model_5, newdata= Client_4, interval = "prediction")
+
+predict(model_5, newdata= Client_5, interval = "prediction")
+
+
+### Prediction based on model_7
+## model_7 <- lm(LnCharges  ~ LnAge +  LnBMI  + smokeronly + Maleonly + Children   , data = insurance_train)
+
+Client_1 <- data.frame(LnAge = log(60) , LnBMI = log(22) , Age = 60, BMI = 22, Children = 0, Maleonly = FALSE, smokeronly = FALSE, WinterSprings = 0, WinterPark = 0, Oviedo = 1)
+Client_2 <- data.frame(LnAge = log(40),LnBMI = log(30), Age = 40, BMI = 30, Children = 1, Maleonly = TRUE, smokeronly = FALSE, WinterSprings = 0, WinterPark = 0, Oviedo = 0)
+Client_3 <- data.frame(LnAge = log(25),LnBMI = log(25), Age = 25, BMI = 25, Children = 0, Maleonly = TRUE, smokeronly = TRUE, WinterSprings = 0, WinterPark = 1, Oviedo = 0)
+Client_4 <- data.frame(LnAge = log(33),LnBMI = log(35), Age = 33, BMI = 35, Children = 2, Maleonly = FALSE, smokeronly = FALSE, WinterSprings = 1, WinterPark = 0, Oviedo = 1)
+Client_5 <- data.frame(LnAge = log(45),LnBMI = log(27), Age = 45, BMI = 27, Children = 3, Maleonly = FALSE, smokeronly = FALSE, WinterSprings = 0, WinterPark = 0, Oviedo = 1)
+
+predict(model_7, newdata= Client_1, interval = "prediction")
+
+predict(model_7, newdata= Client_2, interval = "prediction")
+
+predict(model_7, newdata= Client_3, interval = "prediction")
+
+predict(model_7, newdata= Client_4, interval = "prediction")
+
+predict(model_7, newdata= Client_5, interval = "prediction")
+
 
 ```
 
