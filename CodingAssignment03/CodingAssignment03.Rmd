@@ -548,7 +548,7 @@ Client_5 <- data.frame(LnAge = log(45),LnBMI = log(27), Age = 45, BMI = 27, Chil
 
 ### Prediction based on model_5
 
-## model_5 <- lm(Charges  ~ LnAge + LnBMI + Female +Smoker  , data = insurance_train)
+## model_5 <- lm(LnCharges  ~ LnAge + LnBMI + Female +Smoker  , data = insurance_train)
 
 predict(model_5, newdata= Client_1, interval = "prediction")
 

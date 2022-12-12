@@ -5935,7 +5935,7 @@ Client_5 &lt;- data.frame(LnAge = log(45),LnBMI = log(27), Age = 45, BMI = 27, C
 
 ### Prediction based on model_5
 
-## model_5 &lt;- lm(Charges  ~ LnAge + LnBMI + Female +Smoker  , data = insurance_train)
+## model_5 &lt;- lm(LnCharges  ~ LnAge + LnBMI + Female +Smoker  , data = insurance_train)
 
 predict(model_5, newdata= Client_1, interval = &quot;prediction&quot;)</code></pre>
 <pre><code>##       fit       lwr      upr
