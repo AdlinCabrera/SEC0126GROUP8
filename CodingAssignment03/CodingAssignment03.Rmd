@@ -381,19 +381,19 @@ Looking at the scatter plot and histograms, we only included quantitative variab
 
 Using data transformation, the natural logarithm of charges results in something closer to a normal distribution. However, the natural logarithm of age, and BMI does not result in a normal distribution. Below is a summary of our findings within 7 models:
 
-Model 1: By taking the log of Charges, Age, BMI, Female, Children, Smoker, Winter Springs, Winter Park, and Oviedo it brought the outliers closer to Charges. Here we can see that Age, Female, and Smoker test significant and have multiple R2 of 78%. Additionally, the residual standard error is 0.4368. 
+**Model 1**: By taking the log of Charges, Age, BMI, Female, Children, Smoker, Winter Springs, Winter Park, and Oviedo it brought the outliers closer to Charges. Here we can see that Age, Female, and Smoker test significant and have multiple R2 of 78%. Additionally, the residual standard error is 0.4368. 
 
-Model 2: By taking the log of Charges, Age, BMI, Female, Children, and Smoker we can see that Age, BMI, Female, and Smoker test significant and have multiple R2 of 78%. Additionally, the residual standard error is 0.4245.
+**Model 2**: By taking the log of Charges, Age, BMI, Female, Children, and Smoker we can see that Age, BMI, Female, and Smoker test significant and have multiple R2 of 78%. Additionally, the residual standard error is 0.4245.
 
-Model 3: By taking the log of Charges, Age, BMI squared, Female, Children, and Smoker we can see that Age, Female, and Smoker test significant and have multiple R2 of 78%. Additionally, the residual standard error is 0.4296.
+**Model 3**: By taking the log of Charges, Age, BMI squared, Female, Children, and Smoker we can see that Age, Female, and Smoker test significant and have multiple R2 of 78%. Additionally, the residual standard error is 0.4296.
 
-Model 4: By taking the log of Charges, Age squared, Age, BMI, Female, Children, and Smoker we can see that BMI, Female, and Smoker test significant and have multiple R2 of 78%. Additionally, the residual standard error is 0.4289.
+**Model 4**: By taking the log of Charges, Age squared, Age, BMI, Female, Children, and Smoker we can see that BMI, Female, and Smoker test significant and have multiple R2 of 78%. Additionally, the residual standard error is 0.4289.
 
-Model 5: By taking the log of Charges, log of Age, log of BMI, Female, and Smoker we can see that all variables test significant and have multiple R2 of 78%. Additionally, the residual standard error is 0.4231.
+**Model 5**: By taking the log of Charges, log of Age, log of BMI, Female, and Smoker we can see that all variables test significant and have multiple R2 of 78%. Additionally, the residual standard error is 0.4231.
 
-Model 6: By taking the log of Charges, log of Age, log of BMI, Smoker Only and Male Only we can see that all variables test significant and have multiple R2 of 78%. Additionally, the residual standard error is 0.4231.
+**Model 6**: By taking the log of Charges, log of Age, log of BMI, Smoker Only and Male Only we can see that all variables test significant and have multiple R2 of 78%. Additionally, the residual standard error is 0.4231.
 
-Model 7: By taking the log of Charges, log of Age, log of BMI, Smoker Only, Male Only, and Children we can see that all variables, except Children, test significant and have multiple R2 of 78%. Additionally, the residual standard error is 0.4245.
+**Model 7**: By taking the log of Charges, log of Age, log of BMI, Smoker Only, Male Only, and Children we can see that all variables, except Children, test significant and have multiple R2 of 78%. Additionally, the residual standard error is 0.4245.
 
 
 # Question 5
@@ -599,9 +599,11 @@ summary(model_7)
 ```
 
 ### Summary:
-After reviewing the coefficients, the coefficient signs for Age, BMI,  smoker and/or male tested significant and have a direct relationship with the dependent variable (Charges).
+After reviewing the coefficients, the coefficient signs for Age, BMI, smoker, female and/or male tested significant and have a direct relationship with the dependent variable (Charges).
 
 And if you think about it logically, getting pregnant and/or having a child will increase medical charges and premiums. Smoking will also have a direct and positive coefficient because being a smoker will only increase medical costs. For Age and BMI each year, it will increase. Because if you change x by one, we’d expect y to change by β1.
+
+
 
 
 # Question 7

@@ -2178,11 +2178,11 @@ violates a classical assumption.</p></li>
 <li><p>The second plot titled “Normal Q-Q” shows violates the assumption
 of a normally distributed dependent variable for a fixed set of
 predictors.</p></li>
-<li><p>The third plot titled “Scale-Location” violates Homoscedasticity.
-If this assumption were not violated, you’d see random points around a
-horizontal line. In this case, it is upwards sloping then goes down on
-the right hand side, so you can see there is a “fanning out”
-effect.</p></li>
+<li><p>The third plot titled “Scale-Location” violates
+Heteroscedasticity. If this assumption were not violated, you’d see
+random points around a horizontal line. In this case, it is upwards
+sloping then goes down on the right hand side, so you can see there is a
+“fanning out” effect.</p></li>
 <li><p>The last plot “Residuals vs. Leverage” violates regression
 outliers, influential observations, and high leverage points.</p></li>
 </ol>
@@ -5726,35 +5726,35 @@ variables.</p>
 in something closer to a normal distribution. However, the natural
 logarithm of age, and BMI does not result in a normal distribution.
 Below is a summary of our findings within 7 models:</p>
-<p>Model 1: By taking the log of Charges, Age, BMI, Female, Children,
-Smoker, Winter Springs, Winter Park, and Oviedo it brought the outliers
-closer to Charges. Here we can see that Age, Female, and Smoker test
+<p><strong>Model 1</strong>: By taking the log of Charges, Age, BMI,
+Female, Children, Smoker, Winter Springs, Winter Park, and Oviedo it
+brought the outliers closer to Charges. Here we can see that Age,
+Female, and Smoker test significant and have multiple R2 of 78%.
+Additionally, the residual standard error is 0.4368.</p>
+<p><strong>Model 2</strong>: By taking the log of Charges, Age, BMI,
+Female, Children, and Smoker we can see that Age, BMI, Female, and
+Smoker test significant and have multiple R2 of 78%. Additionally, the
+residual standard error is 0.4245.</p>
+<p><strong>Model 3</strong>: By taking the log of Charges, Age, BMI
+squared, Female, Children, and Smoker we can see that Age, Female, and
+Smoker test significant and have multiple R2 of 78%. Additionally, the
+residual standard error is 0.4296.</p>
+<p><strong>Model 4</strong>: By taking the log of Charges, Age squared,
+Age, BMI, Female, Children, and Smoker we can see that BMI, Female, and
+Smoker test significant and have multiple R2 of 78%. Additionally, the
+residual standard error is 0.4289.</p>
+<p><strong>Model 5</strong>: By taking the log of Charges, log of Age,
+log of BMI, Female, and Smoker we can see that all variables test
 significant and have multiple R2 of 78%. Additionally, the residual
-standard error is 0.4368.</p>
-<p>Model 2: By taking the log of Charges, Age, BMI, Female, Children,
-and Smoker we can see that Age, BMI, Female, and Smoker test significant
-and have multiple R2 of 78%. Additionally, the residual standard error
-is 0.4245.</p>
-<p>Model 3: By taking the log of Charges, Age, BMI squared, Female,
-Children, and Smoker we can see that Age, Female, and Smoker test
+standard error is 0.4231.</p>
+<p><strong>Model 6</strong>: By taking the log of Charges, log of Age,
+log of BMI, Smoker Only and Male Only we can see that all variables test
 significant and have multiple R2 of 78%. Additionally, the residual
-standard error is 0.4296.</p>
-<p>Model 4: By taking the log of Charges, Age squared, Age, BMI, Female,
-Children, and Smoker we can see that BMI, Female, and Smoker test
-significant and have multiple R2 of 78%. Additionally, the residual
-standard error is 0.4289.</p>
-<p>Model 5: By taking the log of Charges, log of Age, log of BMI,
-Female, and Smoker we can see that all variables test significant and
-have multiple R2 of 78%. Additionally, the residual standard error is
-0.4231.</p>
-<p>Model 6: By taking the log of Charges, log of Age, log of BMI, Smoker
-Only and Male Only we can see that all variables test significant and
-have multiple R2 of 78%. Additionally, the residual standard error is
-0.4231.</p>
-<p>Model 7: By taking the log of Charges, log of Age, log of BMI, Smoker
-Only, Male Only, and Children we can see that all variables, except
-Children, test significant and have multiple R2 of 78%. Additionally,
-the residual standard error is 0.4245.</p>
+standard error is 0.4231.</p>
+<p><strong>Model 7</strong>: By taking the log of Charges, log of Age,
+log of BMI, Smoker Only, Male Only, and Children we can see that all
+variables, except Children, test significant and have multiple R2 of
+78%. Additionally, the residual standard error is 0.4245.</p>
 </div>
 </div>
 <div id="question-5" class="section level1">
